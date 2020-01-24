@@ -1,0 +1,181 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "theme": "dark",
+    "resources": [],
+    "styles": {
+        "buttonTextStyle" : { 
+           "values" : { 
+                 "color" : "white" , 
+                 "textAlign" : "center" , 
+                 "textAlignVertical" : "center" , 
+                 "fontSize" : "30"
+           } 
+        }, 
+        "buttonStyle" : { 
+            "values" : [
+                {  
+                    "backgroundColor" : "green"  
+                }, 
+                {
+                    "when": "${state.pressed}",
+                    "backgroundColor": "#333333"
+                }, 
+                {
+                    "when": "${state.disabled}",
+                    "backgroundColor": "gray"
+                }, 
+                {
+                    "when": "${state.focused}",
+                    "backgroundColor": "blue"
+                } ,                  
+                {
+                    "when": "${state.checked}",
+                    "backgroundColor": "red"
+                } 
+            ]
+        }
+    },
+    "layouts": {
+        "button" : 
+        { 
+            "parameters" : [ 
+                "action" , 
+                "text" ,                                          
+                { 
+                    "name" : "width"  , 
+                    "default" : "100%" 
+                } , 
+                { 
+                    "name" : "height"  , 
+                    "default" : "20vh" 
+                },                  
+                { 
+                    "name" : "textStyle"  , 
+                    "default" : "buttonTextStyle" 
+                },         
+                { 
+                    "name" : "buttonStyle"  , 
+                    "default" : "buttonStyle"
+                }, 
+                { 
+                    "name": "inheritState" , 
+                    "default" : false 
+                } 
+                
+            ], 
+            "item" : 
+            {                 
+                "type": "TouchWrapper",                       
+                "inheritParentState" : "${inheritState}" ,                                             
+                "item" : {                      
+                    "type": "Frame",                         
+                    "width" : "${width}" , 
+                    "height" : "${height}" , 
+                    "style" : "buttonStyle" , 
+                    "inheritParentState" : true , 
+                    "item":  
+                    {                              
+                        "type" : "Text" , 
+                        "style" : "${textStyle}" , 
+                        "text" : "${text}" , 
+                        "textAlign" : "center" , 
+                        "width": "100%",
+                         "height" : "100%"  
+                    } 
+                }               
+            }
+        } 
+    },
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type" : "Container" , 
+                "direction" : "row" , 
+                "justifyContent" : "center" ,                 
+                "width" : "100vw", 
+                "height" : "100vh" , 
+                "items" : [ 
+                    {
+                        "type" : "Frame" , 
+                        "backgroundColor" : "pink" , 
+                        "width" : "100%" , 
+                        "height" : "100%", 
+                        "position": "absolute"
+                    }, 
+                    { 
+                        "type" : "Container" , 
+                        "direction" : "column" , 
+                        "justifyContent" : "center" , 
+                        "width" : "60%" , 
+                        "height" : "100%" , 
+                        "items" :  
+                        [ 
+                            { 
+                                "type" : "button" ,                                                                  
+                                "text" : "normal"   , 
+                                "spacing" : "2vh"                                 
+                            }, 
+                            { 
+                                "type" : "button" ,                                                                   
+                                "text" : "disabled",  
+                                "id" : "disabledElementId" , 
+                                "spacing" : "2vh" 
+
+                            }, 
+                            { 
+                                "type" : "button" ,                                   
+                                "text" : "focused" ,
+                                "inheritState" : false, 
+                                "id" : "defaultFocusElementId" , 
+                                "spacing" : "2vh" 
+                            }, 
+                            { 
+                                "type" : "button" ,                                   
+                                "text" : "checked" , 
+                                "checked" : "true" , 
+                                "id" : "checkedElementId" , 
+                                "spacing" : "2vh" 
+
+                            }, 
+                            { 
+                                "when" : "${false}" , 
+                                "type": "TouchWrapper",                       
+                                "spacing" : "2vh" ,  
+                                "id" : "focusElementId" , 
+                                "item" : {   
+                                    "type": "Frame",                         
+                                    "width" : "50vw" , 
+                                    "height" : "20vh" , 
+                                    "style" : "buttonStyle" , 
+                                    "inheritParentState" : true , 
+                                    "item":  
+                                    {                              
+                                        "type" : "Text" , 
+                                        "style" : "buttonTextStyle" , 
+                                        "text" : "raw elements" 
+                                    } 
+                                }               
+                            }
+                        ],
+                        "onMount" : [
+                                {
+                                "type": "SetFocus",
+                                "componentId": "defaultFocusElementId"
+                                },
+                                {
+                                "type": "SetState",
+                                "value": "true",
+                                "state": "disabled",
+                                "componentId" : "disabledElementId"
+                                }
+                                ]
+                            }
+                        ] 
+            }
+        ]
+    }
+}

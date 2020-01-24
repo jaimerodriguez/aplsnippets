@@ -1,0 +1,156 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "theme": "dark",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type" : "Container" ,
+                "alignItems" : "center" ,
+               "items" : [
+                    {
+                    "type": "Video",
+                    "source":
+                        [
+                          "https://aplsnippets.s3.amazonaws.com/assets/videos/BBBShort.mp4"
+                        ],
+                    "id": "videoPlayerId",
+                    "autoplay": false,
+                    "scale" : "best-fill" ,
+                    "width" : "85vw" ,
+                    "height": "100vh" ,                    
+                    "onPause": [
+                        {
+                            "type" : "SetValue",
+                            "componentId": "videoStatusId",
+                            "property": "text",
+                            "value": "paused"
+                        }
+                    ],
+                    "onPlay": [
+                        {
+                            "type" : "SetValue",
+                            "componentId": "videoStatusId",
+                            "property": "text",
+                            "value": "playing"
+                        }
+                    ],
+                    "onEnd": [
+                        {
+                            "type" : "SetValue",
+                            "componentId": "videoStatusId",
+                            "property": "text",
+                            "value": "ended"
+                        }
+                    ]
+                },
+                {
+                    "type" : "Text" ,
+                    "id" : "videoStatusId" ,
+                    "text" : "unknown" ,
+                    "position" : "absolute",
+                    "top" : 10 ,
+                    "height" : "50"
+                },
+                {
+                    "type": "TouchWrapper",
+                    "width" : "20vw",
+                    "height" : "20vh",
+                    "position": "absolute" ,
+                    "bottom" : 0 ,
+                    "right" : "15vw",
+                    "id" : "pauseButtonId" ,
+                    "opacity" : 0 , 
+                    "item" :
+                    {
+						"type": "Image",
+						"source": "https://s3.amazonaws.com/syfyapl/playback/pause.png",
+						"height": "10vh",
+						"width": "10vw",
+						"paddingLeft": "1vw",
+						"paddingRight": "1vw",
+						"paddingTop": "0vh",
+						"paddingBottom": "0vh",
+                        "align": "center"                        
+					},
+                    "onPress":
+                    [{
+                        "type" : "Sequential",
+                        "commands" :
+                        [
+                            {
+                                 "type": "ControlMedia" ,
+                                 "componentId" : "videoPlayerId" ,
+                                 "command" : "pause"
+                            },
+                            {
+                                "type" : "SetValue",
+                                "property": "opacity",
+                                "value": 0
+                            },
+
+                            {
+                                "type" : "SetValue",
+                                "property": "opacity",
+                                "componentId" : "playButtonId" ,
+                                "value": 100
+                            }
+                        ]
+                    }]
+                },
+                {
+                    "type": "TouchWrapper",
+                    "width" : "20vw",
+                    "height" : "20vh",
+                    "position": "absolute" ,
+                    "bottom" : 0 ,
+                    "left" : "25vw",
+                    "id" : "playButtonId" ,
+                    "item" :
+                    {
+						"type": "Image",
+						"source": "https://s3.amazonaws.com/syfyapl/playback/play.png",
+						"height": "10vh",
+						"width": "10vw",
+						"paddingLeft": "1vw",
+						"paddingRight": "1vw",
+						"paddingTop": "0vh",
+						"paddingBottom": "0vh",
+						"align": "center",
+						"opacity" : 100
+					},
+                    "onPress":
+                    [{
+                        "type" : "Sequential",
+                        "commands" :
+                        [
+                            {
+                                 "type": "ControlMedia" ,
+                                 "componentId" : "videoPlayerId" ,
+                                 "command" : "play"
+                            },
+                            {
+                                "type" : "SetValue",
+                                "property": "opacity",
+                                "value": 0
+                            },
+                            {
+                                "type" : "SetValue",
+                                "property": "opacity",
+                                "componentId" : "pauseButtonId" ,
+                                "value": 100
+                            }
+                        ]
+                    }]
+                }
+            ]
+        }]
+    }
+}

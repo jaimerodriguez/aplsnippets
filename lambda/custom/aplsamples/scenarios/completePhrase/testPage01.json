@@ -1,0 +1,95 @@
+{
+    "type": "APL",
+    "version": "1.0",
+    "settings": {},
+    "theme": "dark",
+    "import": [
+            { 
+                "name" : "alexa-styles", 
+                "version" : "1.0.0" 
+            } 
+        ],
+    "resources": [
+        { 
+            "colors" : {
+               "SkillBackgroundColor" : "brown" , 
+               "SkillHighlightTextColor"  : "yellow" , 
+               "SkillTextColor" : "white"
+            }
+        } 
+        
+        ],
+    "styles": {
+        
+        
+    },
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {
+        "CenteredText" : 
+        { 
+            "parameters" :  [
+                "text"
+                
+                ] , 
+            "item" : 
+            {
+                "type" : "Text", 
+                "text" : "${text}", 
+                "textAlign" : "center" , 
+                "color" :  "@SkillTextColor" , 
+                "width" : "50%", 
+                "height" : "100%" , 
+                "textAlignVertical": "center" ,  
+                "fontSize" : "@fontSizeLarge"
+            }
+        }, 
+        "SkillLogo" : 
+        { 
+            "type" : "Frame" , 
+            "item" : { 
+                "type" : "Image" , 
+                "source" : "https://aplsnippets.s3.amazonaws.com/assets/images/food.png" 
+            } 
+        } 
+    },
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            { 
+                "type" : "Container" , 
+                "width" : "100vw" , 
+                "height" : "100vh" , 
+                "direction" : "row" , 
+                "items" : [ 
+                { 
+                  "type" : "Frame" , 
+                  "backgroundColor" : "@SkillBackgroundColor"  , 
+                  "width" : "100vw" , 
+                  "height" : "100vh" , 
+                  "position" : "absolute" 
+                }, 
+                {
+                    "when": "${@viewportProfile != @hubRoundSmall}",
+                    "type" : "SkillLogo"  , 
+                    "position" : "absolute" , 
+                    "right" : "5vw" ,  
+                    "top" : "5vh" , 
+                    "width": "15vw" , 
+                    "height" : "15vh"
+                }, 
+                { 
+                        "type" : "CenteredText" , 
+                        "text" : "${payload.phrase.teaser}<i><b>${payload.phrase.completion}</b> </i>", 
+                        "width" : "80vw" , 
+                        "height" : "100vh" , 
+                        "paddingLeft" : "10vw"
+                }  
+                ]    
+            }
+        ]
+    }
+}

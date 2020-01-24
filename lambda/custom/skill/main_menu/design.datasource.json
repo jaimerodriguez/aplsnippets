@@ -1,0 +1,10 @@
+{
+    "listData" :  
+     {
+         "pages" : 
+         [ 
+            { "name" : "profile" , "speechText" : "profile", "reprompt" : "You can say 'refresh' or 'goBack' " , "document" : "./basic/packages/profile/document.json" , "datasource" : null , "directives" : null , "description" : "some long text goes here to explain what it does" }, 
+            { "name" : "profile2" , "speechText" : "profile", "reprompt" : "You can say 'refresh' or 'goBack' " , "document" : "./basic/packages/profile/document.json" , "datasource" : null , "directives" : null } 
+        ]
+     }
+}

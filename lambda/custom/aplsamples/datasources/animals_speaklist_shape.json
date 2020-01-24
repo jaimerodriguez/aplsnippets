@@ -1,0 +1,128 @@
+{
+    "single": {
+        "name": "item name",
+        "imageSource": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg" ,
+
+        "properties" :  {
+                    "transformerSourceName" : "<speak>speech coming from transformer</speak>"
+        },
+        "transformers": [
+            {
+                "inputPath": "transformerSourceName",
+                "outputName": "nameAsSpeech",
+                "transformer": "ssmlToSpeech"
+            }
+        ]
+    },
+    "animals": {
+        "properties" : {
+            "items": [
+                {
+                    "name": "Fluffy",
+                    "ssmlName" : "<speak> Fluffy, the cat </speak>" ,
+                    "directSpeech" : "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3" ,
+                    "type": "cat",
+                    "sounds": [
+                        {
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3",
+                            "action": "meow"
+                        },
+                        {
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat02.mp3",
+                            "action": "meow"
+                        }
+                    ],
+                    "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
+                    "images": [
+                        {
+                            "size": "large",
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
+                        }
+                    ]
+                },
+                {
+                    "name": "Frodo",
+                    "ssmlName" : "<speak>Frodo, boss dog</speak>" ,
+                    "directSpeech" : "https://aplsnippets.s3.amazonaws.com/assets/audio/dog01.mp3" ,
+                    "type": "dog",
+                    "sounds": [
+                        {
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog01.mp3",
+                            "action": "bark"
+                        },
+                        {
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog02.mp3",
+                            "action": "bark"
+                        }
+                    ],
+                    "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg",
+                    "images": [
+                        {
+                            "size": "large",
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg"
+                        }
+                    ]
+                },
+                {
+                    "name": "hair ball",
+                    "ssmlName" : "<speak>hair ball, the twin cat</speak>" ,
+                    "directSpeech" : "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3" ,
+                    "type": "cat",
+                    "sounds": [
+                        {
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3",
+                            "action": "meow"
+                        },
+                        {
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat02.mp3",
+                            "action": "meow"
+                        }
+                    ],
+                    "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
+                    "images": [
+                        {
+                            "size": "large",
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Frodo twin",
+                    "ssmlName" : "<speak>Frodo's twin</speak>" ,
+                    "directSpeech" : "https://aplsnippets.s3.amazonaws.com/assets/audio/dog01.mp3" ,
+                    "type": "dog",
+                    "sounds": [
+                        {
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog01.mp3",
+                            "action": "bark"
+                        },
+                        {
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog02.mp3",
+                            "action": "bark"
+                        }
+                    ],
+                    "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg",
+                    "images": [
+                        {
+                            "size": "large",
+                            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        "transformers" :
+        [
+            {
+                "inputPath": "items[*].ssmlName",
+                "outputName": "nameAsSpeech",
+                "transformer": "ssmlToSpeech"
+            },
+            {
+                "inputPath": "items[*].ssmlName",
+                "outputName": "nameAsText",
+                "transformer": "ssmlToText"
+            }
+        ]
+    }
+}

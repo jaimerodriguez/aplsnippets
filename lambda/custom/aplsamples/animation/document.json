@@ -1,0 +1,136 @@
+{
+  "type": "APL",
+  "version": "1.1",
+  "settings": {},
+  "theme": "dark",
+  "import": [],
+  "resources": [],
+  "styles": {},
+  "onMount": [],
+  "graphics": {},
+  "commands": {},
+  "layouts": {},
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "type" : "Container",
+        "items": [
+          {
+            "type": "Text",
+            "text" : "Animation" ,
+            "position" : "absolute" ,
+            "top" : "22vh",
+            "width" : "100vw",
+            "textAlign": "center" ,
+            "opacity" : 0 ,
+            "id" : "animationId1"
+
+          },
+          {
+            "type": "Text",
+            "text" : "has" ,
+            "position" : "absolute" ,
+            "top" : "44vh",
+            "width" : "100vw",
+            "textAlign": "center" ,
+            "id" : "animationId2",
+            "opacity" : 0
+          },
+          {
+            "type": "Text",
+            "text" : "arrived" ,
+            "position" : "absolute" ,
+            "top" : "66vh",
+            "width" : "100vw",
+            "textAlign": "center" ,
+            "id" : "animationId3",
+            "opacity" : 0
+          },
+          {
+            "type": "Text",
+            "text" : "trigger" ,
+            "position" : "absolute" ,
+            "top" : "0",
+            "width" : "0",
+            "onMount" :
+            [
+              {
+                "type": "AnimateItem",
+                "easing": "ease-in-out",
+                "duration": 2900,
+                "componentId": "animationId1",
+                "value": [
+                  {
+                    "property": "opacity",
+                    "from": 0,
+                    "to": 1
+                  },
+                  {
+                    "property": "transform",
+                    "from": [
+                      { "translateX": -1000 }
+
+                    ],
+                    "to": [
+                      { "translateX": 0 }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "AnimateItem",
+                "easing": "ease-in-out",
+                "duration": 2900,
+                "componentId": "animationId2",
+                "value": [
+                  {
+                    "property": "opacity",
+                    "from": 0,
+                    "to": 1
+                  },
+                  {
+                    "property": "transform",
+                    "from": [
+                      { "rotate": 719 },
+                      { "translateX": -200 }
+                    ],
+                    "to": [
+                      { "rotate": 0 },
+                      { "translateX": 0 }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "AnimateItem",
+                "easing": "ease-in-out",
+                "duration": 2900,
+                "componentId": "animationId3",
+                "value": [
+                  {
+                    "property": "opacity",
+                    "from": 0,
+                    "to": 1
+                  },
+                  {
+                    "property": "transform",
+                    "from": [
+                      { "scale": 1 }
+                    ],
+                    "to": [
+                      { "scale": 2 }
+                    ]
+                  }
+                ]
+              }
+
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

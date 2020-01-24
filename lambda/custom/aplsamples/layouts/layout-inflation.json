@@ -1,0 +1,91 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "settings": {},
+    "theme": "dark",
+    "import": [],
+    "resources": [
+        { 
+            "colors" : {
+               "SkillBackgroundColor" : "brown" , 
+               "SkillHighlightTextColor"  : "yellow" , 
+               "SkillTextColor" : "white"
+            }
+        } 
+        
+        ],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {       
+        "FrameChild" : 
+        { 
+            "parameters" :  [
+                "text"
+                ] , 
+            "item" : 
+            {
+                "type" : "Frame", 
+                "backgroundColor" : "green" , 
+                "width" : "40%", 
+                "height" : "100%"  
+            }
+        }, 
+        "FrameGrandChild" : 
+        { 
+            "parameters" :  [
+                "text"
+                ] , 
+            "item" : 
+            {
+                "type" : "Frame", 
+                "backgroundColor" : "pink" , 
+                "width" : "100%", 
+                "height" : "100%"  , 
+                "item": 
+                { 
+                    "type" : "Frame", 
+                    "backgroundColor" : "red" , 
+                    "width" : "50%", 
+                    "height" : "100%" , 
+                    "paddingLeft" : "100"
+                } 
+            }
+        } 
+    },
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            { 
+                "type" : "Container" , 
+                "width" : "100vw" , 
+                "height" : "100vh" , 
+                "direction" : "row" , 
+                "items" : [ 
+                { 
+                  "type" : "Frame" , 
+                  "backgroundColor" : "@SkillBackgroundColor"  , 
+                  "width" : "100vw" , 
+                  "height" : "100vh" , 
+                  "position" : "absolute" 
+                }, 
+                { 
+                    "type" : "FrameChild" , 
+                     "width" : "50vw" , 
+                    "height" : "100vh" 
+                },
+                { 
+                    "type" : "FrameGrandChild" , 
+                     "width" : "50vw" , 
+                    "height" : "100vh" , 
+                    "paddingLeft": "10vw"
+                }
+                
+                ]    
+            }
+        ]
+    }
+}

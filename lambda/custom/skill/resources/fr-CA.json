@@ -1,0 +1,33 @@
+{ 
+    "WELCOME" : 
+    { 
+        "v1": "Bienvenue dans le Alexa Skills Kit, vous pouvez dire bonjour", 
+        "v2": "Bienvenue. S'il vous plaît dites bonjour" , 
+        "v3": "Bonjour!"
+    },     
+    "CARD_TITLE" : "Bonjour le monde", 
+    "SKILL_NAME" : "Bonjour le monde", 
+    "locale" : 
+    { 
+        "en" : { 
+            "US" : "English in the United States" , 
+            "GB" : "English in Great Britain"
+        }, 
+        "es" : { 
+            "MX" : "Español de Mexico" , 
+            "ES" : "Español de España"
+        }, 
+        "fr": 
+        {
+            "CA" : "Français au Canada" , 
+            "FR" : "Français au France"
+        }
+    },
+    "SAMPLE_VARIABLE_EXPANSION" : "Votre paramètres régionaux  est {localeName}" ,
+    "HELP_INSTRUCTIONS" : "Vous pouvez me dire bonjour! Ou vous pouvez demander quelle est mon langue" , 
+    "GOODBYE": "Au revoir", 
+    "ERROR_REPEAT" : { 
+        "v1": "Désolé, je ne peux pas comprendre la commande. S'il te plaît, répète" ,
+        "v2": "Je n'ai pas compris ça. S'il vous plaît dites-le encore" 
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "theme": "dark",
+    "resources": [],
+    "styles": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "Container",
+                "width" : "100vw", 
+                "height" : "100vh", 
+                "items": [
+                    {
+                        "type": "Image",
+                        "id" : "introImage" , 
+                        "source": "${payload.single.imageSource}",
+                        "scale": "best-fill",
+                        "position": "absolute",
+                        "width": "100vw",
+                        "height": "100vh"         
+                    }, 
+                    {                          
+                        "id" : "introMessage" , 
+                        "type" : "Text" , 
+                        "text" : "1:${payload.single.name}", 
+                        "speech" :"${payload.single.properties.nameAsSpeech}"
+                    }, 
+                    {                          
+                        "id" : "introMessage2" , 
+                        "type" : "Text" , 
+                        "text" : "2:${payload.single.properties.nameAsText}"                         
+                    } 
+                ], 
+                "onMount" : [                    
+                        {
+                          "type": "SpeakItem",
+                          "componentId": "introMessage",
+                          "highlightMode": "line"
+                        }                     
+                ]            
+            }
+        ]
+    }
+}

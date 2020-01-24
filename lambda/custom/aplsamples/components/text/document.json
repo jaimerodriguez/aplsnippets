@@ -1,0 +1,111 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "settings": {},
+    "theme": "dark",
+    "import": [
+        {
+            "name": "alexa-layouts",
+            "version": "1.1.0"
+        }
+    ],
+    "resources": [
+        {
+            "when": "${@viewportShape == @viewportShapeRound}",
+            "dimension": {
+                "rootContainerWidth": "70vw",
+                "rootContainerHeight": "70vh",
+                "rootContainerLeft": "15vw",
+                "rootContainerTop": "15vh", 
+                "topPaddingBetweenElements" : "20" 
+            }
+        },
+        {
+            "when": "${@viewportShape != @viewportShapeRound}",
+            "dimension": {
+                "rootContainerWidth": "96vw",
+                "rootContainerHeight": "96vh",
+                "rootContainerLeft": "2vw",
+                "rootContainerTop": "2vh", 
+                "topPaddingBetweenElements" : "10" 
+            }
+        }
+    ],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {
+    },
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "Container",
+                "justifyContent": "center",
+                "items": [
+                    {
+                        "type": "ScrollView",
+                        "position": "absolute",
+                        "left": "@rootContainerLeft",
+                        "top": "@rootContainerTop",
+                        "width": "@rootContainerWidth",
+                        "height": "@rootContainerHeight",
+                        
+                        "item": {
+                            "type": "Container",
+                            "direction": "column",
+                            "minHeight" : "200%" , 
+                            "items": [
+                                {
+                                    "spacing" : "@topPaddingBetweenElements", 
+                                    "type": "Text",
+                                    "text": "this is simple text"
+                                },
+                                {
+                                    "spacing" : "@topPaddingBetweenElements", 
+                                    "type": "Text",
+                                    "text": "centered text",
+                                    "textAlign": "center"
+                                },
+                                {
+                                    "spacing" : "@topPaddingBetweenElements", 
+                                    "type": "Text",
+                                    "text": "color(blue), size (xsmall), weight (bold)",
+                                    "color": "blue", 
+                                    "fontSize" : "@fontSizeXSmall", 
+                                    "fontWeight": "bold" 
+                                },
+                                {
+                                    "spacing" : "@topPaddingBetweenElements",  
+                                    "type": "Text",
+                                    "text": "with &amp;, &lt;, &#x1F601;" 
+                                },
+                                {
+                                    "spacing" : "@topPaddingBetweenElements", 
+                                    "type": "Text",
+                                    "text": "html tags: <b>bold</b> <i>italic </i> <u>underline</u> <strike>strike</strike><sup>sup</sup><sub>sub</sub>"
+                                },
+                                {
+                                    "spacing" : "@topPaddingBetweenElements", 
+                                    "type": "Text",
+                                    "text": "letter spacing: 10", 
+                                    "letterSpacing": 10
+                                },
+                                {
+                                    "spacing" : "@topPaddingBetweenElements", 
+                                    "type": "Text",
+                                    "fontSize" : "@fontSizeSmall", 
+                                    "text": "max lines:1 will automatically clip text with an ellipsis when the text is too long",                                    
+                                    "maxLines": 1
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

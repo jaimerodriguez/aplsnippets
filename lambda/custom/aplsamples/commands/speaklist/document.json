@@ -1,0 +1,72 @@
+{
+    "type": "APL",
+    "version": "1.0",
+    "theme": "dark",
+    "resources": [],
+    "styles": {},
+    "layouts": {
+            "listItem" :
+            { 
+                "parameters": [
+                    "image",
+                    "name"                     
+                ],
+                "items": 
+                [                    
+                    { 
+                        "type": "Container",
+                        "width": "80vw",
+                        "height": "100vh",
+                        "direction": "row",
+                        "items": [
+                            {
+                                "type": "Image",
+                                "source": "${image}",
+                                "scale": "best-fit",
+                                "width": "100%",
+                                "height": "100%"
+                            },
+                            {
+                                "type": "Text",
+                                "text": "${name}",
+                                "width": "100%",
+                                "position": "absolute",
+                                "textAlign": "center"                                                                 
+                            }
+                        ]
+                    }
+                ] 
+            }
+    },
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [            
+            {
+                "type": "Sequence",
+                "width" : "100vw", 
+                "height" : "100vh" ,
+                "scrollDirection" : "horizontal", 
+                "id" : "SequenceForSpeakList", 
+                "data" : "${payload.animals.properties.items}",                          
+                "items": [
+                    {
+                        "type": "listItem",
+                        "image": "${data.largeImage}",
+                        "name":  "${data.nameAsText}" , 
+                        "speech" : "${data.nameAsSpeech}"                                         
+                    }
+                ]  
+                , 
+                "onMount" : [
+                    {
+                      "type": "SpeakList",
+                      "componentId": "SequenceForSpeakList",
+                      "count" : 3,
+                      "start" : 0                     
+                    }]                                                     
+            }                          
+        ]
+    }
+}

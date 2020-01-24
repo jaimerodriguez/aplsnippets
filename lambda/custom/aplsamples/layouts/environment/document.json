@@ -1,0 +1,146 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "theme": "dark",
+    "import": [
+      {
+        "name": "alexa-layouts",
+        "version": "1.1.0"
+      }
+    ],
+    "resources": [
+      {
+        "when": "${@viewportShape == @viewportShapeRound}",
+        "dimensions": {
+          "marginLeft": "50dp",
+          "nvpLabelWidth": "40vw"
+        }
+      },
+      {
+        "when": "${@viewportShape != @viewportShapeRound}",
+        "dimensions": {
+          "nvpLabelWidth": "50vw"
+        }
+      }
+    ],
+    "styles": {
+      "nvpLabelStyle": {
+        "extend": "textStyleBody",
+        "values": [
+          {
+            "paddingLeft": "@marginLeft",
+            "color": "gray"
+          }
+        ]
+      }
+    },
+    "layouts": {
+      "nameValuePairLayout": {
+        "parameters": [
+          {
+            "name": "labelText",
+            "type": "string"
+          },
+          {
+            "name": "valueText",
+            "type": "string"
+          },
+          {
+            "name": "labelTextStyle",
+            "type": "string",
+            "default": "nvpLabelStyle"
+          },
+          {
+            "name": "valueTextStyle",
+            "type": "string",
+            "default": "textStyleBody"
+          }
+        ],
+        "items": [
+          {
+            "type": "Container",
+            "direction": "row",
+            "items": [
+              {
+                "type": "Text",
+                "text": "${labelText}",
+                "style": "${labelTextStyle}",
+                "maxLines": 1,
+                "width" : "@nvpLabelWidth",
+                "paddingLeft" : "@marginLeft"
+              },
+              {
+                "type": "Text",
+                "text": "${valueText}",
+                "style": "${valueTextStyle}",
+                "paddingLeft": "@marginLeft"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mainTemplate": {
+      "parameters": [
+        "payload"
+      ],
+      "items": [
+        {
+          "type": "Container",
+          "height": "100vh",
+          "items": [
+            {
+              "type": "AlexaHeader",
+              "headerTitle" : "Environment properties" ,
+              "headerBackButton" : true   ,
+              "headerBackgroundColor" : "red"
+            },
+            {
+              "type": "Container",
+              "justifyContent": "${viewport.shape == 'round' ? 'center' : 'start'}",
+              "items": [
+                {
+                  "type": "nameValuePairLayout",
+                  "labelText": "agentName",
+                  "valueText": "${environment.agentName}"
+                }, 
+                {
+                  "type": "nameValuePairLayout",
+                  "labelText": "agentVersion",
+                  "valueText": "${environment.agentVersion}"
+                }, 
+                {
+                  "type": "nameValuePairLayout",
+                  "labelText": "aplVersion",
+                  "valueText": "${environment.aplVersion}"
+                }, 
+                {
+                  "type": "nameValuePairLayout",
+                  "labelText": "disallowVideo",
+                  "valueText": "${environment.disallowVideo}"
+                },
+                {
+                  "type": "nameValuePairLayout",
+                  "labelText": "animation",
+                  "valueText": "${environment.animation}"
+                },
+                {
+                  "type": "nameValuePairLayout",
+                  "labelText": "allowOpenURL",
+                  "valueText": "${environment.allowOpenURL}"
+                }
+              ]
+            },
+            {
+              "when": "${viewport.shape != 'round' &&  @viewportHeight != @viewportSizeXSmall}",
+              "type": "AlexaFooter",
+              "footerHint": "Footer hint goes here", 
+              "position" : "absolute" , 
+              "top": "85vh"
+            }
+          ]
+        }
+      ]
+    }
+  }
+  

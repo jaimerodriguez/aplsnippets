@@ -1,0 +1,185 @@
+{
+  "type": "APL",
+  "version": "1.1",
+  "theme": "dark",
+  "import": [
+    {
+      "name": "alexa-layouts",
+      "version": "1.1.0"
+    }
+  ],
+  "resources": [
+    {
+      "when": "${@viewportShape == @viewportShapeRound}",
+      "dimensions": {
+        "marginLeft": "50dp",
+        "nvpLabelWidth": "30vw",
+        "nvpLabelFontSize" : "@fontSizeSmall"
+      }, 
+      "strings" : { 
+        "viewportHeightString" : "Height", 
+        "viewportWidthString" : "Width" 
+      }
+    },
+    {
+      "when": "${@viewportShape != @viewportShapeRound}",
+      "dimensions": {
+        "marginLeft": "30dp",
+        "nvpLabelWidth": "50vw", 
+        "nvpLabelFontSize" : "@fontSizeMedium"
+      }, 
+      "strings" : { 
+        "viewportHeightString" : "viewportHeight" ,
+        "viewportWidthString" : "viewportWidth"
+      }
+    }
+  ],
+  "styles": {
+    "nvpLabelStyle": {
+      "extend": "textStyleBody",
+      "values": [
+        {
+          "paddingLeft": "@marginLeft",
+          "color": "gray" , 
+          "fontSize" : "@nvpLabelFontSize", 
+          "maxLines" : 1      
+        }
+      ]
+    }, 
+    "nvpValueStyle" : {
+      "extend": "textStyleBody",
+      "values": [
+        {
+          "paddingLeft": "@marginLeft",
+          "color": "gray"
+        }
+      ]
+    }
+    
+  },
+  "layouts": {
+    "nameValuePairLayout": {
+      "parameters": [
+        {
+          "name": "labelText",
+          "type": "string"
+        },
+        {
+          "name": "valueText",
+          "type": "string"
+        },
+        {
+          "name": "labelTextStyle",
+          "type": "string",
+          "default": "nvpLabelStyle"
+        },
+        {
+          "name": "valueTextStyle",
+          "type": "string",
+          "default": "textStyleBody"
+        }
+      ],
+      "items": [
+        {
+          "type": "Container",
+          "direction": "row",
+          "items": [
+            {
+              "type": "Text",
+              "text": "${labelText}",
+              "style": "${labelTextStyle}",
+              "maxLines": 1,
+              "width" : "@nvpLabelWidth",
+              "paddingLeft" : "@marginLeft"
+            },
+            {
+              "type": "Text",
+              "text": "${valueText}",
+              "style": "${valueTextStyle}",
+              "paddingLeft": "@marginLeft"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "type": "Container",
+        "height": "100vh",
+        "items": [
+          {
+            "type": "AlexaHeader",
+            "headerTitle" : "Profile Properties" ,
+            "headerBackButton" : false ,
+            "headerBackgroundColor" : "red"
+          },
+          {
+            "type": "Container",
+            "justifyContent": "${@viewportShape == @viewportShapeRound ? 'center' : 'start'}",
+            "items": [
+              {
+                "type": "nameValuePairLayout",
+                "labelText": "profile",
+                "valueText": "${@viewportProfile}"
+              },
+              {
+                "when": "${viewport.shape != 'round'}",
+                "type": "nameValuePairLayout",
+                "labelText": "class",
+                "valueText": "${@viewportSizeClass}"
+              },
+              {
+                "type": "nameValuePairLayout",
+                "labelText": "shape",
+                "valueText": "${@viewportShape}"
+              },
+              {
+                "type": "nameValuePairLayout",
+                "labelText": "density",
+                "valueText": "${@viewportDensity}"
+              },
+              {
+                "type": "nameValuePairLayout",
+                "labelText": "width",
+                "valueText": "${viewport.width}"
+              },
+              {
+                "type": "nameValuePairLayout",
+                "labelText": "height",
+                "valueText": "${viewport.height}"
+              },
+              {
+                "type": "nameValuePairLayout",
+                "labelText": "@viewportWidthString",
+                "valueText": "${@viewportWidth}"
+              },
+              {
+                "type": "nameValuePairLayout",
+                "labelText": "@viewportHeightString",
+                "valueText": "${@viewportHeight}"
+              },
+              {
+                "description" : "this shows you can use viewport.shape, but do not do that. It is not a good practice" , 
+                "when": "${viewport.shape != 'round'}",
+                "type": "nameValuePairLayout",
+                "labelText": "orientation",
+                "valueText": "${@viewportOrientation}"
+              }
+            ]
+          },
+          {
+            "description" : "this hides the footer in round devices (Echo Spot) and small devices (Echo show 5)" , 
+            "when": "${@viewportShape != @viewportShapeRound &&  @viewportHeight != @viewportSizeXSmall}",
+            "type": "AlexaFooter",
+            "footerHint": "Footer hint goes here"
+          }
+        ]
+      }
+    ]
+  }
+}

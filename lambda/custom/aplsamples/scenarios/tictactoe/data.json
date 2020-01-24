@@ -1,0 +1,15 @@
+{
+    "board" : { 
+        "items" : [
+            { "content" : "1" , "style" : "contentItem" } , 
+            { "content" : "2" , "style" : "contentItem" }, 
+            { "content" : "X" , "style": "contentItemFilled" } , 
+            { "content" : "O" , "style": "contentItemFilled" } , 
+            { "content" : "X" , "style": "contentItemFilled" } ,
+            { "content" : "6" , "style": "contentItem" } , 
+            { "content" : "7" , "style": "contentItem" } ,
+            { "content" : "8" , "style": "contentItem" } , 
+            { "content" : "O" , "style": "contentItemFilled" }  
+        ]
+    } 
+}

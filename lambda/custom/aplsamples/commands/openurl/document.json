@@ -1,0 +1,73 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "settings": {},
+    "theme": "dark",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+             { 
+               "type" : "Container" , 
+               "direction" : "column" ,          
+               "items" : [  
+                 { 
+                    "type" : "Text" , 
+                    "text" : "as" , 
+                    "id" : "errorId" , 
+                    "opacity" : 1, 
+                    "textAlign" : "center"
+                 }, 
+                 { 
+                    "when" : "${false}" ,  
+                    "type" : "Text" , 
+                    "text" : "OpenURL is not supported" , 
+                    "id" : "openURLUnsupportedId" , 
+                    "opacity" : 1, 
+                    "textAlign" : "center"
+                 } 
+                ], 
+                "onMount": 
+                [ 
+                   { 
+                       "type" : "Sequential"  , 
+                       "commands" : [ 
+                           {
+                               "type": "SetValue",
+                                "componentId": "errorId",
+                                "property": "text",
+                                "value": "In 8 seconds, you will be redirected to https://www.amazon.com. To Stop that, say 'Alexa, Go back!'"
+                           }, 
+                           {
+                               "type": "OpenURL",
+                                "source": "https://www.amazon.com",
+                                "delay" : 8000, 
+                                "onFail": {
+                                    "type": "SetValue",
+                                    "componentId": "errorId",
+                                    "property": "text",
+                                    "value": "Unable to open Amazon shopping (${event.source.value})"
+                                } 
+                           } 
+                        ], 
+                        "catch" : [ 
+                          {
+                               "type": "SetValue",
+                                "componentId": "errorId",
+                                "property": "text",
+                                "value": "Command Sequence did not run"
+                           }] 
+                   } 
+                ] 
+             } 
+            ] 
+    }
+}

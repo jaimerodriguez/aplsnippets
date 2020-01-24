@@ -1,0 +1,22 @@
+{ 
+    "single": {
+    "name": "Fluffy",
+    "imageSource": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg" , 
+    
+    "properties" :  { 
+        "transformerSourceName" : "<speak> My name is fluffy. Mr Fluffy, the cat! </speak>"  
+    }, 
+    "transformers": [
+        {
+            "inputPath": "transformerSourceName",
+            "outputName": "nameAsSpeech",
+            "transformer": "ssmlToSpeech"
+        }, 
+        {
+            "inputPath": "transformerSourceName",
+            "outputName": "nameAsText",
+            "transformer": "ssmlToText"
+        }
+    ]
+    }
+} 

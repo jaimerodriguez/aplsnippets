@@ -1,0 +1,150 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "theme": "dark",
+    "import": [
+            { 
+                "name": "alexa-layouts", 
+                "version" : "1.1.0" 
+            } 
+        ],
+    "resources": [],
+    "styles": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            { 
+                "type" : "Container" , 
+                "width" : "100vw" , 
+                "height" : "100vh" , 
+                "items" : [
+                    { 
+                        "type" : "Frame" , 
+                        "position" : "absolute" , 
+                        "left" : 0 , 
+                        "top" : 0 , 
+                        "width" : "50%" , 
+                        "height" : "50%" , 
+                         "item" : { 
+                             "type" : "Image"  , 
+                             "source" : "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"  , 
+                             "width" : "100%" , 
+                             "height" : "100%" , 
+                             "borderRadius" : 200
+                         } 
+                    },
+                    { 
+                        "type" : "Frame" , 
+                        "position" : "absolute" , 
+                        "left" : "50%" , 
+                        "top" : 0 , 
+                        "width" : "50%" , 
+                        "height" : "50%" , 
+                         "item" :  { 
+                            "type" : "Image"  , 
+                             "source" : "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"  , 
+                             "width" : "100%" , 
+                             "height" : "100%" , 
+                             "overlayColor" : "#0000FF55"
+                         } 
+                    }, 
+                    { 
+                        "type" : "Frame" , 
+                        "position" : "absolute" , 
+                        "left" : "0%", 
+                        "top" : "50%" , 
+                        "width" : "50%" , 
+                        "height" : "50%" , 
+                         "item" : { 
+                            "type" : "Image"  , 
+                             "source" : "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"  , 
+                             "width" : "100%" , 
+                             "height" : "100%" , 
+                             "filters": [
+                                {
+                                 "type": "Blur",
+                                "radius": "10dp"
+                                }
+                          ]
+                         } 
+                    }, 
+                    { 
+                        "type" : "Frame" , 
+                        "position" : "absolute" , 
+                        "left" : "50%" , 
+                        "top" : "50%" , 
+                        "width" : "50%" , 
+                        "height" : "50%" , 
+                         "item" : { 
+                             "type" : "Image"  , 
+                             "source" : "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"  , 
+                             "width" : "100%" , 
+                             "height" : "100%" , 
+                             "overlayGradient" : { 
+                                 "type": "radial",
+                                  "colorRange": [
+                                    "#FF0000CC",
+                                    "#00FF00CC",
+                                    "#0000FFCC"
+                                  ],
+                                  "inputRange": [
+                                    0,
+                                    0.55, 
+                                    0.9
+                                    ]
+                             } 
+                         } 
+                    }, 
+                    { 
+                        "type" : "Text" , 
+                        "position" : "absolute" , 
+                        "top" : "40vh", 
+                        "text": "borderRadius", 
+                        "left" : "0" , 
+                        "width" : "50%" , 
+                        "textAlign" : "center" , 
+                        "fontSize": "@fontSizeSmall", 
+                        "color" : "#FFFFFF88" 
+                    }, 
+                    { 
+                        "type" : "Text" , 
+                        "position" : "absolute" , 
+                        "top" : "40vh", 
+                        "text": "overlay Color", 
+                        "left" : "50vw" , 
+                        "width" : "50%" , 
+                        "textAlign" : "center" ,   
+                        "fontSize": "@fontSizeSmall", 
+                        "color" : "#FFFFFF88" 
+                    }, 
+                    { 
+                        "type" : "Text" , 
+                        "position" : "absolute" , 
+                        "top" : "90vh", 
+                        "text": "effect (blur)", 
+                        "left" : "0" , 
+                        "width" : "50%" , 
+                        "textAlign" : "center" ,   
+                        "fontSize": "@fontSizeSmall", 
+                        "color" : "#FFFFFF88" 
+                    },
+                    { 
+                        "type" : "Text" , 
+                        "position" : "absolute" , 
+                        "top" : "90vh", 
+                        "text": "overlay Gradient", 
+                        "left" : "50vw" , 
+                        "width" : "50%" , 
+                        "textAlign" : "center"  , 
+                        "fontSize": "@fontSizeSmall" ,
+                        "color" : "#FFFFFF88" 
+                    }
+                    
+                ] 
+            }             
+        ]
+    }
+}

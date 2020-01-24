@@ -1,0 +1,259 @@
+{
+  "type": "APL",
+  "version": "1.1",
+  "settings": {},
+  "theme": "dark",
+  "import": [
+    {
+      "name": "alexa-layouts",
+      "version": "1.1.0"
+    }
+  ],
+  "resources": [],
+  "styles": {
+      "hiddenText" : { 
+        "values" : {  
+        "width" : 0 , 
+        "height" :0 , 
+        "position" : "absolute", 
+        "top" :0 , 
+        "right" : 0  
+        } 
+      }
+  },
+  "onMount": [],
+  "graphics": {},
+  "commands": {},
+  "layouts": {},
+  "mainTemplate": {
+      "parameters": [
+          "payload"
+      ],
+      "items": [
+              { 
+              "type" : "Container" , 
+              "width" : "100vw" , 
+              "height" : "100vh" , 
+              "items" : [
+                    {   
+                          "type" : "Frame",                            
+                          "height" : "100vh" ,
+                          "backgroundColor": "white" ,  
+                          "width" : "100vw" , 
+                          "position" : "absolute" , 
+                          "top" : "0vh" , 
+                          "left" : "0vw" 
+                      } , 
+                      {  "when" : "${false}" , 
+                          "type" : "Frame", 
+                          "backgroundColor" : "white" , 
+                          "height" : "100vh" , 
+                          "width" : "100vw" , 
+                          "position" : "absolute" , 
+                          "top" : "0vh" , 
+                          "left" : "0vw" 
+                      } ,
+                      { 
+                          "id" : "twisterBackgroundId" , 
+                          "type" : "Image", 
+                          "source" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/images/circles.png"  , 
+                          "height" : "100vh" , 
+                          "width" : "100vw" , 
+                          "position" : "absolute" , 
+                          "top" : "0vh" , 
+                          "left" : "0vw" 
+                      } , 
+                      {    
+                        "when": "${@viewportShape != @viewportShapeRound}",                        
+                        "type" : "Text" , 
+                        "text": "LEFT HAND" , 
+                        "position" : "absolute" , 
+                        "left" : "5vw", 
+                        "bottom": "10vw", 
+                        "color" : "black" 
+                      },
+                      { 
+                        "when": "${@viewportShape != @viewportShapeRound}",
+                        "type" : "Text" , 
+                        "text": "RIGHT HAND" , 
+                        "position" : "absolute" , 
+                        "right" : "5vw", 
+                        "top": "10vw", 
+                        "color" : "black" 
+                      },
+                      { 
+                         "when": "${@viewportShape != @viewportShapeRound}",
+                        "type" : "Text" , 
+                        "text": "LEFT FEET" , 
+                        "position" : "absolute" , 
+                        "left" : "5vw", 
+                        "top": "10vw", 
+                        "color" : "black" 
+                      },
+                      { 
+                        "when": "${@viewportShape != @viewportShapeRound}",
+                        "type" : "Text" , 
+                        "text": "RIGHT FEET" , 
+                        "position" : "absolute" , 
+                        "right" : "5vw", 
+                        "bottom": "10vw", 
+                        "color" : "black" 
+                      },
+                      { 
+                          "id" : "dialComponentId" , 
+                          "type" : "Image", 
+                          "source" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/images/dial.png"  , 
+                          "height" : "80vh" , 
+                          "width" : "80vw" , 
+                          "position" : "absolute" , 
+                          "top" : "10vh" , 
+                          "left" : "10vw" 
+                      },                         
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem01" ,  
+                        "style" : "hiddenText" ,                       
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/right_hand_green.mp3"
+                      }, 
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem02" ,  
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/right_hand_blue.mp3"                        
+                      }, 
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem03" , 
+                        "style" : "hiddenText" ,                        
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/right_hand_red.mp3"
+                      },                       
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem04" ,  
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/right_hand_yellow.mp3"                        
+                      }, 
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem05" ,  
+                        "style" : "hiddenText" ,                       
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/right_foot_green.mp3"
+                      },                      
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem06" ,  
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/right_foot_blue.mp3"                        
+                      },
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem07" , 
+                        "style" : "hiddenText" , 
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/right_foot_red.mp3"
+                      },  
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem08" ,  
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/right_foot_yellow.mp3"                        
+                      },                       
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem09" ,  
+                        "style" : "hiddenText" ,                       
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/left_hand_green.mp3"
+                      },
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem10" ,  
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/left_hand_blue.mp3"                        
+                      }, 
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem11" , 
+                        "style" : "hiddenText" , 
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/left_hand_red.mp3"
+                      },                      
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem12" ,  
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/left_hand_yellow.mp3"                        
+                      },                     
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem15" , 
+                        "style" : "hiddenText" , 
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/left_foot_red.mp3"
+                      }, 
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem13" ,  
+                        "style" : "hiddenText" ,                       
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/left_foot_green.mp3"
+                      },
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem16" ,  
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/left_foot_yellow.mp3"                        
+                      }, 
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItem14" ,  
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/left_foot_blue.mp3"                        
+                      }, 
+                  
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItemCrank" , 
+                        "style" : "hiddenText" ,  
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/toys_13.mp3"
+                      } , 
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItemSharedTicks" ,      
+                        "style" : "hiddenText" ,                     
+                        "speech" : "https://aplsnippets.s3.amazonaws.com/assets/spinner/audio/ticks_14.mp3"
+                      }, 
+                      {
+                        "type" : "Text", 
+                        "id" : "speakItemAgain" ,
+                        "style" : "hiddenText" ,   
+                        "speech" : "${payload.data.properties.outputSpeech02"
+                      } 
+                  ],
+                  "onMount" :
+                  [
+                      {
+                        "type": "Parallel",                       
+                        "repeatCount": 0,
+                        "commands": [                                                      
+                          {
+                              "type": "AnimateItem",
+                              "easing": "ease-in-out",
+                              "duration": 500,
+                              "delay": 900, 
+                              "componentId": "dialComponentId",
+                              "value": [
+                                {
+                                  "property": "transform",
+                                  "from": [
+                                    { "rotate": 0 }
+              
+                                  ],
+                                  "to": [
+                                    { "rotate": "${payload.data.target}" }
+                                  ]
+                                }
+                              ]
+                          }                          
+                        ]
+                      }                    
+                  ]
+              }
+          ]
+  }
+}

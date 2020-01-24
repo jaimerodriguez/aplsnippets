@@ -1,0 +1,923 @@
+{
+  "type": "APL",
+  "version": "1.0.0",
+  "import": [
+    {
+      "name": "alexa-styles",
+      "version": "1.0.0"
+    }
+  ],
+  "resources": [
+    {
+      "description": "Public resource definitions for header spacing - defaults",
+      "dimensions": {
+        "headerBackAsset": "68",
+        "headerBackAssetMarginLeft": "20",
+        "headerBackAssetMarginTop": "36",
+        "headerMarginTop": "48",
+        "headerMarginBottom": "36",
+        "headerAttributionMaxWidth": "160dp",
+        "headerAttributionMaxHeight": "56dp",
+        "headerSpacer": "32"
+      }
+    },
+    {
+      "description": "Public resource definitions for header spacing - hub-round-small",
+      "when": "${@viewportProfile == @hubRoundSmall}",
+      "dimensions": {
+        "headerBackAsset": "0",
+        "headerBackAssetMarginLeft": "0",
+        "headerBackAssetMarginTop": "0",
+        "headerMarginTop": "59",
+        "headerMarginBottom": "24",
+        "headerAttributionMaxWidth": "160dp",
+        "headerAttributionMaxHeight": "56dp",
+        "headerSpacer": "0"
+      }
+    },
+    {
+      "description": "Public resource definitions for header spacing - hub-landscape-medium",
+      "when": "${@viewportProfile == @hubLandscapeMedium}",
+      "dimensions": {
+        "headerBackAsset": "68",
+        "headerBackAssetMarginLeft": "4",
+        "headerBackAssetMarginTop": "18",
+        "headerMarginTop": "32",
+        "headerMarginBottom": "16",
+        "headerAttributionMaxWidth": "160",
+        "headerAttributionMaxHeight": "46",
+        "headerSpacer": "32"
+      }
+    },
+    {
+      "description": "Public resource definitions for header spacing - hub-landscape-large",
+      "when": "${@viewportProfile == @hubLandscapeLarge}",
+      "dimensions": {
+        "headerBackAsset": "68dp",
+        "headerBackAssetMarginLeft": "20",
+        "headerBackAssetMarginTop": "32",
+        "headerMarginTop": "48",
+        "headerMarginBottom": "36",
+        "headerAttributionMaxWidth": "160",
+        "headerAttributionMaxHeight": "56",
+        "headerSpacer": "32"
+      }
+    },
+    {
+      "description": "Public resource definitions for header spacing - tv-landscape-xlarge",
+      "when": "${@viewportProfile == @tvLandscapeXLarge}",
+      "dimensions": {
+        "headerBackAsset": "0",
+        "headerBackAssetMarginLeft": "0",
+        "headerBackAssetMarginTop": "0",
+        "headerMarginTop": "36",
+        "headerMarginBottom": "28",
+        "headerAttributionMaxWidth": "160",
+        "headerAttributionMaxHeight": "42",
+        "headerSpacer": "28"
+      }
+    },
+    {
+      "description": "Public resource definitions for footer spacing - defaults",
+      "dimensions": {
+        "footerMarginTop": "36",
+        "footerMarginBottom": "36"
+      }
+    },
+    {
+      "description": "Public resource definitions for footer spacing - hub-round-small",
+      "when": "${@viewportProfile == @hubRoundSmall}",
+      "dimensions": {
+        "footerMarginTop": "40",
+        "footerMarginBottom": "100"
+      }
+    },
+    {
+      "description": "Public resource definitions for footer spacing - hub-landscape-medium",
+      "when": "${@viewportProfile == @hubLandscapeMedium}",
+      "dimensions": {
+        "footerMarginTop": "18",
+        "footerMarginBottom": "36"
+      }
+    },
+    {
+      "description": "Public resource definitions for footer spacing - hub-landscape-large",
+      "when": "${@viewportProfile == @hubLandscapeLarge}",
+      "dimensions": {
+        "footerMarginTop": "24",
+        "footerMarginBottom": "48"
+      }
+    },
+    {
+      "description": "Public resource definitions for footer spacing - tv-landscape-xlarge",
+      "when": "${@viewportProfile == @tvLandscapeXLarge}",
+      "dimensions": {
+        "footerMarginTop": "24",
+        "footerMarginBottom": "24"
+      }
+    },
+    {
+      "description": "Public resource definitions for transport controls spacing - defaults",
+      "dimensions": {
+        "transportButtonSpacing": "64dp",
+        "transportPrimaryButtonSize": "120dp",
+        "transportSecondaryButtonSize": "80dp",
+        "transportLayoutMargins": "24dp",
+        "iconButtonIconSize": "100%"
+      }
+    },
+    {
+      "description": "Public resource definitions for transport controls spacing - hub-round-small",
+      "when": "${@viewportProfile == @hubRoundSmall}",
+      "dimensions": {
+        "transportButtonSpacing": "52dp",
+        "transportPrimaryButtonSize": "80dp",
+        "transportSecondaryButtonSize": "60dp",
+        "transportLayoutMargins": "16dp"
+      }
+    },
+    {
+      "description": "Public resource definitions for transport controls spacing - hub-landscape-medium",
+      "when": "${@viewportProfile == @hubLandscapeMedium}",
+      "dimensions": {
+        "transportButtonSpacing": "64dp",
+        "transportPrimaryButtonSize": "120dp",
+        "transportSecondaryButtonSize": "80dp",
+        "transportLayoutMargins": "24dp"
+      }
+    },
+    {
+      "description": "Public resource definitions for transport controls spacing - hub-landscape-large",
+      "when": "${@viewportProfile == @hubLandscapeLarge}",
+      "dimensions": {
+        "transportButtonSpacing": "64dp",
+        "transportPrimaryButtonSize": "120dp",
+        "transportSecondaryButtonSize": "80dp",
+        "transportLayoutMargins": "24dp"
+      }
+    },
+    {
+      "description": "Resource definition for icon buttons background shape - landscape",
+      "when": "${viewport.width >= viewport.height}",
+      "dimensions": {
+        "iconButtonBorderRadius": "100vw"
+      }
+    },
+    {
+      "description": "Resource definition for icon buttons background shape - portrait",
+      "when": "${viewport.width < viewport.height}",
+      "dimensions": {
+        "iconButtonBorderRadius": "100vh"
+      }
+    },
+    {
+      "description": "Icon asset URLs for transport control icon buttons",
+      "when": "${@viewportProfile == @hubRoundSmall}",
+      "strings": {
+        "urlNextIcon": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_next_default_36dp.png",
+        "urlNextIconFocused": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_next_focused_36dp.png",
+        "urlPreviousIcon": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_previous_default_36dp.png",
+        "urlPreviousIconFocused": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_previous_focused_36dp.png",
+        "urlPlayIcon": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_play_default_48dp.png",
+        "urlPlayIconFocused": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_play_focused_48dp.png",
+        "urlPauseIcon": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_pause_default_48dp.png",
+        "urlPauseIconFocused": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_pause_focused_48dp.png"
+      }
+    },
+    {
+      "description": "Icon asset URLs for transport control icon buttons",
+      "strings": {
+        "urlNextIcon": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_next_default_48dp.png",
+        "urlNextIconFocused": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_next_focused_48dp.png",
+        "urlPreviousIcon": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_previous_default_48dp.png",
+        "urlPreviousIconFocused": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_previous_focused_48dp.png",
+        "urlPlayIcon": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_play_default_72dp.png",
+        "urlPlayIconFocused": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_play_focused_72dp.png",
+        "urlPauseIcon": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_pause_default_72dp.png",
+        "urlPauseIconFocused": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/ic_transport_pause_focused_72dp.png"
+      }
+    },
+    {
+      "description": "Public resource definitions for icon button colors",
+      "colors": {
+        "colorIconButtonBase": "#EBEDED",
+        "colorHighEmphasisIconButtonBackground": "#FAFAFA33",
+        "colorHighEmphasisIconButtonBackgroundPressed": "#FAFAFA80",
+        "colorLowEmphasisIconButtonBackgroundPressed": "#FAFAFA80"
+      }
+    },
+    {
+      "description": "Public resource definitions for icon button colors - tv-landscape-xlarge",
+      "when": "${@viewportProfile == @tvLandscapeXLarge}",
+      "colors": {
+        "colorHighEmphasisIconButtonBackgroundPressed": "#DADADA80",
+        "colorLowEmphasisIconButtonBackgroundPressed": "#DADADA80"
+      }
+    }
+  ],
+  "layouts": {
+    "AlexaHeader": {
+      "parameters": [
+        {
+          "name": "headerTitle",
+          "description": "Primary text to render in header.",
+          "type": "string"
+        },
+        {
+          "name": "headerSubtitle",
+          "description": "Secondary text to render in header.",
+          "type": "string"
+        },
+        {
+          "name": "headerAttributionText",
+          "description": "Attribution text to render in header.  Only shown when no headerAttributionImage is provided, and when headerAttributionPrimacy is true, or on a device that shows Title/Subtitle and Attribution.",
+          "type": "string"
+        },
+        {
+          "name": "headerAttributionImage",
+          "description": "URL for attribution image source. Only shown when headerAttributionPrimacy is true, or on a device that shows Title/Subtitle and Attribution.",
+          "type": "string"
+        },
+        {
+          "name": "headerAttributionPrimacy",
+          "description": "On devices that can only display one element due to screen size, Attribution is prioritized. Setting False displays Title/Subtitle.  Defaults to true.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "headerBackButton",
+          "description": "Toggle to display back button in header.  Defaults to false.",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "headerNavigationAction",
+          "description": "DEPRECATED: Argument to pass in SendEvent command when back button is pressed",
+          "type": "string"
+        },
+        {
+          "name": "headerBackButtonCommand",
+          "description": "Command that is issued when back button is pressed.",
+          "type": "any",
+          "default": {
+            "type": "SendEvent",
+            "arguments": [
+              "goBack"
+            ]
+          }
+        },
+        {
+          "name": "headerBackgroundColor",
+          "description": "Optional color value to use as background color for Header. Defaults to transparent.",
+          "type": "color",
+          "default": "transparent"
+        }
+      ],
+      "items": [
+        {
+          "when": "${@viewportProfile == @hubRoundSmall}",
+          "type": "Frame",
+          "backgroundColor": "${headerBackgroundColor}",
+          "item": {
+            "type": "Container",
+            "direction": "column",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "width": "100%",
+            "paddingTop": "@headerMarginTop",
+            "paddingBottom": "@headerMarginBottom",
+            "paddingLeft": "@marginLeft",
+            "paddingRight": "@marginRight",
+            "items": [
+              {
+                "when": "${headerAttributionPrimacy && (headerAttributionImage || headerAttributionText)}",
+                "type": "AlexaHeaderAttribution",
+                "headerAttributionImage": "${headerAttributionImage}",
+                "headerAttributionText": "${headerAttributionText}"
+              },
+              {
+                "when": "${!headerAttributionPrimacy || (!headerAttributionImage && !headerAttributionText)}",
+                "type": "AlexaHeaderDetails",
+                "headerTitle": "${headerTitle}",
+                "headerSubtitle": "${headerSubtitle}"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Frame",
+          "backgroundColor": "${headerBackgroundColor}",
+          "item": {
+            "type": "Container",
+            "width": "100%",
+            "minHeight": "${headerBackButton == true ? @headerBackAsset : 0}",
+            "items": [
+              {
+                "type": "Container",
+                "direction": "row",
+                "justifyContent": "spaceBetween",
+                "alignItems": "start",
+                "width": "100%",
+                "paddingTop": "@headerMarginTop",
+                "paddingBottom": "@headerMarginBottom",
+                "paddingLeft": "@marginLeft",
+                "paddingRight": "@marginRight",
+                "items": [
+                  {
+                    "type": "AlexaHeaderDetails",
+                    "headerTitle": "${headerTitle}",
+                    "headerSubtitle": "${headerSubtitle}",
+                    "headerDetailsMaxWidth": "${!headerAttributionText && !headerAttributionImage ? '100%' : '70vw'}",
+                    "shrink": 1,
+                    "paddingRight": "${!headerAttributionText && !headerAttributionImage ? '0' : '@headerSpacer'}"
+                  },
+                  {
+                    "when": "${(headerAttributionImage || headerAttributionText)}",
+                    "type": "AlexaHeaderAttribution",
+                    "headerAttributionImage": "${headerAttributionImage}",
+                    "headerAttributionText": "${headerAttributionText}"
+                  }
+                ]
+              },
+              {
+                "when": "${headerBackButton}",
+                "type": "Container",
+                "position": "absolute",
+                "paddingTop": "@headerBackAssetMarginTop",
+                "paddingLeft": "@headerBackAssetMarginLeft",
+                "item": {
+                  "type": "AlexaHeaderBackButton"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "AlexaHeaderDetails": {
+      "parameters": [
+        {
+          "name": "headerTitle",
+          "type": "string"
+        },
+        {
+          "name": "headerSubtitle",
+          "type": "string"
+        },
+        {
+          "name": "headerDetailsMaxWidth",
+          "type": "dimension",
+          "default": "100%"
+        }
+      ],
+      "items": [
+        {
+          "type": "Container",
+          "justifyContent": "start",
+          "alignItems": "${@viewportProfile == @hubRoundSmall ? 'center' : 'start'}",
+          "maxWidth": "${headerDetailsMaxWidth}",
+          "items": [
+            {
+              "type": "Text",
+              "when": "${headerTitle && headerTitle != ''}",
+              "text": "${headerTitle}",
+              "maxLines": 1,
+              "style": "${@viewportProfile == @hubRoundSmall ? 'textStyleBodyAlt' : 'textStyleDetail'}",
+              "textAlign": "${@viewportProfile == @hubRoundSmall ? 'center' : 'left'}"
+            },
+            {
+              "when": "${headerSubtitle && headerSubtitle != ''}",
+              "type": "Text",
+              "text": "${headerSubtitle}",
+              "maxLines": 1,
+              "style": "${@viewportProfile == @hubRoundSmall ? 'textStyleBody' : 'textStyleDetailAlt'}",
+              "textAlign": "${@viewportProfile == @hubRoundSmall ? 'center' : 'left'}"
+            }
+          ]
+        }
+      ]
+    },
+    "AlexaHeaderAttribution": {
+      "parameters": [
+        {
+          "name": "headerAttributionText",
+          "type": "string"
+        },
+        {
+          "name": "headerAttributionImage",
+          "type": "string"
+        }
+      ],
+      "items": [
+        {
+          "type": "Container",
+          "justifyContent": "start",
+          "alignItems": "${@viewportProfile == @hubRoundSmall ? 'center' : 'end'}",
+          "width": "${@headerAttributionMaxWidth}",
+          "grow": 1,
+          "shrink": 1,
+          "items": [
+            {
+              "when": "${!headerAttributionImage}",
+              "type": "Text",
+              "text": "${headerAttributionText}",
+              "textAlign": "${@viewportProfile == @hubRoundSmall ? 'center' : 'right'}",
+              "maxLines": 1,
+              "style": "${@viewportProfile == @hubRoundSmall ? 'textStyleBody' : 'textStyleDetailAlt'}"
+            },
+            {
+              "when": "${headerAttributionImage}",
+              "type": "Image",
+              "width": "100%",
+              "height": "${@headerAttributionMaxHeight}",
+              "source": "${headerAttributionImage}",
+              "scale": "best-fit",
+              "align": "${@viewportProfile == @hubRoundSmall ? 'center' : 'top-right'}"
+            }
+          ]
+        }
+      ]
+    },
+    "AlexaHeaderBackButton": {
+      "items": [
+        {
+          "when": "${headerNavigationAction && (@viewportProfile == @hubLandscapeMedium || @viewportProfile == @hubLandscapeLarge)}",
+          "type": "TouchWrapper",
+          "onPress": {
+            "type": "SendEvent",
+            "arguments": [
+              "${headerNavigationAction}"
+            ]
+          },
+          "item": {
+            "type": "Image",
+            "source": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/back_button.png",
+            "width": "@headerBackAsset",
+            "height": "@headerBackAsset",
+            "scale": "best-fit",
+            "align": "center"
+          }
+        },
+        {
+          "when": "${@viewportProfile == @hubLandscapeMedium || @viewportProfile == @hubLandscapeLarge}",
+          "type": "TouchWrapper",
+          "onPress": "${headerBackButtonCommand}",
+          "item": {
+            "type": "Image",
+            "source": "https://d2na8397m465mh.cloudfront.net/packages/alexa-layouts/1.0.0/images/back_button.png",
+            "width": "@headerBackAsset",
+            "height": "@headerBackAsset",
+            "scale": "best-fit",
+            "align": "center"
+          }
+        },
+        {
+          "type": "Text"
+        }
+      ]
+    },
+    "AlexaFooter": {
+      "parameters": [
+        {
+          "name": "hintText",
+          "type": "string",
+          "description": "Hint text to display in Footer."
+        },
+        {
+          "name": "footerHint",
+          "type": "string",
+          "description": "DEPRECATED: Hint text to display in Footer."
+        }
+      ],
+      "items": [
+        {
+          "type": "Container",
+          "direction": "row",
+          "width": "100%",
+          "paddingTop": "@footerMarginTop",
+          "paddingBottom": "@footerMarginBottom",
+          "paddingLeft": "@marginLeft",
+          "paddingRight": "@marginRight",
+          "items": [
+            {
+              "type": "Text",
+              "text": "${footerHint ? footerHint : hintText}",
+              "style": "textStyleHint",
+              "textAlign": "${@viewportProfile == @hubRoundSmall ? 'center' : 'left'}",
+              "width": "100%"
+            }
+          ]
+        }
+      ]
+    },
+    "SecondaryControlsButton": {
+      "parameters": [
+        "buttonSize",
+        "pressAction",
+        "icon",
+        "iconFocused"
+      ],
+      "item": {
+        "type": "TouchWrapper",
+        "onPress": "${pressAction}",
+        "height": "${buttonSize}",
+        "width": "${buttonSize}",
+        "item": {
+          "type": "Frame",
+          "height": "100%",
+          "width": "100%",
+          "position": "absolute",
+          "style": "lowEmphasisIconButton",
+          "borderRadius": "@iconButtonBorderRadius",
+          "inheritParentState": true,
+          "item": {
+            "type": "Container",
+            "height": "100%",
+            "width": "100%",
+            "inheritParentState": true,
+            "items": [
+              {
+                "type": "Image",
+                "height": "100%",
+                "width": "100%",
+                "position": "absolute",
+                "source": "${icon}",
+                "scale": "best-fit",
+                "align": "center",
+                "style": "secondaryControlIcon",
+                "inheritParentState": true
+              },
+              {
+                "type": "Image",
+                "height": "100%",
+                "width": "100%",
+                "position": "absolute",
+                "source": "${iconFocused}",
+                "scale": "best-fit",
+                "align": "center",
+                "style": "secondaryControlIconFocused",
+                "inheritParentState": true
+              }
+            ]
+          }
+        }
+      }
+    },
+    "PlayPauseToggleButton": {
+      "parameters": [
+        "buttonSize",
+        "componentId",
+        "autoplay",
+        "playPauseToggleButtonId"
+      ],
+      "item": {
+        "type": "TouchWrapper",
+        "id": "${playPauseToggleButtonId}",
+        "height": "${buttonSize}",
+        "width": "${buttonSize}",
+        "onPress": {
+          "type": "Parallel",
+          "commands": [
+            {
+              "type": "SetState",
+              "componentId": "${playPauseToggleButtonId}",
+              "state": "checked",
+              "value": "${!event.source.value}"
+            },
+            {
+              "when": "${event.source.value}",
+              "type": "ControlMedia",
+              "componentId": "${componentId}",
+              "command": "play"
+            },
+            {
+              "when": "${!event.source.value}",
+              "type": "ControlMedia",
+              "componentId": "${componentId}",
+              "command": "pause"
+            }
+          ]
+        },
+        "item": {
+          "type": "Frame",
+          "height": "100%",
+          "width": "100%",
+          "style": "highEmphasisIconButton",
+          "borderRadius": "@iconButtonBorderRadius",
+          "inheritParentState": true,
+          "item": {
+            "type": "Container",
+            "height": "100%",
+            "width": "100%",
+            "inheritParentState": true,
+            "items": [
+              {
+                "type": "Container",
+                "height": "100%",
+                "width": "100%",
+                "inheritParentState": true,
+                "style": "playPauseToggleButtonContainer",
+                "id": "toggleButtonImages",
+                "position": "absolute",
+                "items": [
+                  {
+                    "type": "Image",
+                    "id": "toggleButtonPauseImage",
+                    "position": "absolute",
+                    "width": "100%",
+                    "height": "100%",
+                    "source": "@urlPauseIcon",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "style": "playPauseToggleButtonPauseImage",
+                    "inheritParentState": true
+                  },
+                  {
+                    "type": "Image",
+                    "id": "toggleButtonPlayImage",
+                    "position": "absolute",
+                    "width": "100%",
+                    "height": "100%",
+                    "source": "@urlPlayIcon",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "style": "playPauseToggleButtonPlayImage",
+                    "inheritParentState": true
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "height": "100%",
+                "width": "100%",
+                "inheritParentState": true,
+                "style": "playPauseToggleButtonContainerFocused",
+                "id": "toggleButtonImagesFocused",
+                "position": "absolute",
+                "items": [
+                  {
+                    "type": "Image",
+                    "id": "toggleButtonPauseImageFocused",
+                    "position": "absolute",
+                    "width": "100%",
+                    "height": "100%",
+                    "source": "@urlPauseIconFocused",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "style": "playPauseToggleButtonPauseImage",
+                    "inheritParentState": true
+                  },
+                  {
+                    "type": "Image",
+                    "id": "toggleButtonPlayImageFocused",
+                    "position": "absolute",
+                    "width": "100%",
+                    "height": "100%",
+                    "source": "@urlPlayIconFocused",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "style": "playPauseToggleButtonPlayImage",
+                    "inheritParentState": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "AlexaTransportControls": {
+      "parameters": [
+        {
+          "name": "secondaryControls",
+          "type": "string",
+          "default": "skip",
+          "description": "The type of secondary controls to use. Default is skip (foward and backwards). Valid options are skip | jump10 | jump30 | none"
+        },
+        {
+          "name": "primaryControlSize",
+          "type": "dimension",
+          "default": "@transportPrimaryButtonSize",
+          "description": "The height and width for the primary button."
+        },
+        {
+          "name": "secondaryControlSize",
+          "type": "dimension",
+          "default": "@transportSecondaryButtonSize",
+          "description": "The height and width for the secondary buttons."
+        },
+        {
+          "name": "mediaComponentId",
+          "type": "string",
+          "description": "The id of the media playing component"
+        },
+        {
+          "name": "autoplay",
+          "type": "boolean",
+          "default": false,
+          "description": "Determines the starting state of the play/pause icon. This should match the autoplay state of the media playing component. Defaults to false. "
+        },
+        {
+          "name": "playPauseToggleButtonId",
+          "type": "string",
+          "default": "alexaPlayPauseToggleButton",
+          "description": "Optional id to set on the Play/Pause Toggle Button. This is useful when displaying mutiple Videos on one screen, each with their own transport controls."
+        }
+      ],
+      "items": [
+        {
+          "type": "Container",
+          "direction": "row",
+          "alignItems": "center",
+          "paddingTop": "@transportLayoutMargins",
+          "paddingBottom": "@transportLayoutMargins",
+          "paddingLeft": "@transportLayoutMargins",
+          "paddingRight": "@transportLayoutMargins",
+          "items": [
+            {
+              "when": "${secondaryControls == '' || secondaryControls == 'skip'}",
+              "type": "SecondaryControlsButton",
+              "buttonSize": "${secondaryControlSize}",
+              "icon": "@urlPreviousIcon",
+              "iconFocused": "@urlPreviousIconFocused",
+              "id": "secondaryControlLeft",
+              "pressAction": {
+                "type": "Sequential",
+                "commands": [
+                  {
+                    "type": "ControlMedia",
+                    "componentId": "${mediaComponentId}",
+                    "command": "previous"
+                  },
+                  {
+                    "type": "ControlMedia",
+                    "componentId": "${mediaComponentId}",
+                    "command": "pause"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "Frame",
+              "spacing": "${secondaryControls == 'none' ? '0dp' : @transportButtonSpacing}",
+              "item": {
+                "type": "PlayPauseToggleButton",
+                "buttonSize": "${primaryControlSize}",
+                "componentId": "${mediaComponentId}",
+                "autoplay": "${autoplay}",
+                "playPauseToggleButtonId": "${playPauseToggleButtonId}"
+              }
+            },
+            {
+              "when": "${secondaryControls == '' || secondaryControls == 'skip'}",
+              "type": "Frame",
+              "spacing": "@transportButtonSpacing",
+              "item": {
+                "type": "SecondaryControlsButton",
+                "buttonSize": "${secondaryControlSize}",
+                "icon": "@urlNextIcon",
+                "iconFocused": "@urlNextIconFocused",
+                "id": "secondaryControlRight",
+                "pressAction": {
+                  "type": "Sequential",
+                  "commands": [
+                    {
+                      "type": "ControlMedia",
+                      "componentId": "${mediaComponentId}",
+                      "command": "next"
+                    },
+                    {
+                      "type": "ControlMedia",
+                      "componentId": "${mediaComponentId}",
+                      "command": "pause"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "styles": {
+    "highEmphasisIconButton": {
+      "description": "voice optimized icon button style - contained",
+      "values": [
+        {
+          "backgroundColor": "@colorHighEmphasisIconButtonBackground"
+        },
+        {
+          "when": "${state.pressed}",
+          "backgroundColor": "@colorHighEmphasisIconButtonBackgroundPressed"
+        },
+        {
+          "when": "${state.focused}",
+          "backgroundColor": "@colorIconButtonBase"
+        },
+        {
+          "when": "${state.disabled}",
+          "backgroundColor": "@colorHighEmphasisIconButtonBackground"
+        }
+      ]
+    },
+    "lowEmphasisIconButton": {
+      "description": "voice optimized icon button style - image",
+      "values": [
+        {
+          "backgroundColor": "transparent"
+        },
+        {
+          "when": "${state.pressed}",
+          "backgroundColor": "@colorLowEmphasisIconButtonBackgroundPressed"
+        },
+        {
+          "when": "${state.focused}",
+          "backgroundColor": "@colorIconButtonBase"
+        },
+        {
+          "when": "${state.disabled}",
+          "backgroundColor": "transparent"
+        }
+      ]
+    },
+    "secondaryControlIcon": {
+      "description": "style for the secondary action icon - not focused",
+      "values": [
+        {
+          "when": "${state.focused}",
+          "opacity": "0"
+        },
+        {
+          "when": "${!state.focused}",
+          "opacity": "1"
+        }
+      ]
+    },
+    "secondaryControlIconFocused": {
+      "description": "style for the secondary action icon - focused",
+      "values": [
+        {
+          "when": "${state.focused}",
+          "opacity": "1"
+        },
+        {
+          "when": "${!state.focused}",
+          "opacity": "0"
+        }
+      ]
+    },
+    "playPauseToggleButtonPauseImage": {
+      "description": "style for pause Image in the PlayPauseToggleButton layout",
+      "values": [
+        {
+          "when": "${state.checked}",
+          "opacity": "0"
+        },
+        {
+          "when": "${!state.checked}",
+          "opacity": "1"
+        }
+      ]
+    },
+    "playPauseToggleButtonPlayImage": {
+      "description": "style for play Image in the PlayPauseToggleButton layout",
+      "values": [
+        {
+          "when": "${state.checked}",
+          "opacity": "1"
+        },
+        {
+          "when": "${!state.checked}",
+          "opacity": "0"
+        }
+      ]
+    },
+    "playPauseToggleButtonContainer": {
+      "description": "style for the PlayPauseToggleButton",
+      "values": [
+        {
+          "when": "${state.focused}",
+          "opacity": "0"
+        },
+        {
+          "when": "${!state.focused}",
+          "opacity": "1"
+        }
+      ]
+    },
+    "playPauseToggleButtonContainerFocused": {
+      "description": "style for the PlayPauseToggleButton - focused mode",
+      "values": [
+        {
+          "when": "${state.focused}",
+          "opacity": "1"
+        },
+        {
+          "when": "${!state.focused}",
+          "opacity": "0"
+        }
+      ]
+    }
+  }
+}

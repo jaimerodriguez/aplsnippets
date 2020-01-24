@@ -1,0 +1,22 @@
+{ 
+    "data": {    
+        "target" : 258.5 ,              
+        "properties" :  { 
+                "sharedMessage01" : "<speak>Spin again by saying spin, or <emphasis level=\"reduced\">say</emphasis><emphasis level=\"reduced\">not</emphasis><break strength=\"x-weak\"/>ready for more time.</speak>"  , 
+                "sharedMessage02" : "<speak>Say spin for the next turn</speak>"  
+        }, 
+
+    "transformers": [
+        {
+            "inputPath": "sharedMessage01",
+            "outputName": "outputSpeech",
+            "transformer": "ssmlToSpeech"
+        }, 
+        {
+            "inputPath": "sharedMessage02",
+            "outputName": "outputSpeech02",
+            "transformer": "ssmlToSpeech"
+        } 
+    ]
+    }
+} 

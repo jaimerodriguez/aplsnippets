@@ -1,0 +1,99 @@
+{
+  "type": "APL",
+  "version": "1.1",
+  "import": [
+      {
+          "name": "alexa-layouts",
+          "version": "1.1.0"
+      }
+  ],
+  "resources": [
+      {
+          "when": "${@viewportShape == @viewportShapeRound}",
+          "dimensions": {
+              "hintHeight": "0vh",
+              "titleHeight": "0vh",
+              "hintOffset": 15
+          }
+      },
+      {
+          "when": "${@viewportShape != @viewportShapeRound}",
+          "dimensions": {
+              "hintHeight": "15vh",
+              "titleHeight": "15vh",
+              "hintOffset": 15
+          }
+      }
+  ],
+  "mainTemplate": {
+      "parameters": [
+          "payload"
+      ],
+      "items": [
+          {
+              "type": "Container",
+              "direction": "column",
+              "height": "100vh",
+              "width": "100vw",
+              "items": [
+                  {
+                      "when": "${@viewportShape != @viewportShapeRound}",
+                      "headerTitle": "transport controls",
+                      "headerBackgroundColor": "green",
+                      "type": "AlexaHeader",
+                      "height": "@titleHeight"
+                  },
+                  {
+                      "type": "Video",
+                      "height": "${100vh - (@hintHeight + @titleHeight)}",
+                      "width": "100%",
+                      "autoplay": true,
+                      "audioTrack": "foreground",
+                      "id": "VideoPlayer",
+                      "source": {
+                          "url": "https://aplsnippets.s3.amazonaws.com/assets/videos/BBBShort.mp4"
+                      },
+                      "onPause": [
+                          {
+                              "type": "SetValue",
+                              "componentId": "alexaPlayPauseToggleButton",
+                              "state": "checked",
+                              "value": true
+                          }
+                      ],
+                      "onPlay": [
+                          {
+                              "type": "SetValue",
+                              "componentId": "alexaPlayPauseToggleButton",
+                              "state": "checked",
+                              "value": false
+                          }
+                      ]
+                  },
+                  {
+                      "type": "Container",
+                      "alignItems": "center",
+                      "position": "absolute",
+                      "bottom": "${@hintHeight}",
+                      "left": "${50vw-150}",
+                      "item": {
+                          "secondaryControls": "skip",
+                          "primaryControlSize": 50,
+                          "secondaryControlSize": 50,
+                          "mediaComponentId": "VideoPlayer",
+                          "autoplay": true,
+                          "type": "AlexaTransportControls",
+                          "id": "transportControlsId"
+                      }
+                  },
+                  {
+                      "hintText": "Hint goes here",
+                      "type": "AlexaFooter",
+                      "when": "${@viewportShape != @viewportShapeRound}",
+                      "height": "@hintHeight"
+                  }
+              ]
+          }
+      ]
+  }
+}
