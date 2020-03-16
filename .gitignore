@@ -330,7 +330,7 @@ ASALocalRun/
 .mfractor/
 
 #Added by jaime 
-.ask/* 
+*.jaime  
 =======
  
 lambda/custom/package-lock.json

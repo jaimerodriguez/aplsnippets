@@ -4,21 +4,36 @@ function supportsDisplay(handlerInput) {
       && handlerInput.requestEnvelope.context.System
       && handlerInput.requestEnvelope.context.System.device
       && handlerInput.requestEnvelope.context.System.device.supportedInterfaces
-      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces.Display    
+      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces.Display;
 }
 
 
-function supportsAPL ( handlerInput) {
+function supportsAPL(handlerInput) {
   return handlerInput.requestEnvelope.context
       && handlerInput.requestEnvelope.context.System
       && handlerInput.requestEnvelope.context.System.device
       && handlerInput.requestEnvelope.context.System.device.supportedInterfaces
-      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces['Alexa.Presentation.APL']; 
-
+      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces['Alexa.Presentation.APL'];
 }
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
+}
+
+function getKeyFromIndexOnMap(index, map) {
+  const keys = map.keys();
+  let count = 1;
+  let item = null;
+
+  do {
+    item = keys.next();
+    if (count === index) {
+      return item.value;
+    }
+    count += 1;
+  } while (item.done !== true);
+
+  return null;
 }
 
 function getActionName(handlerInput) {
@@ -189,7 +204,9 @@ module.exports = {
     getRandomInt: getRandomInt,
     getRandomIntInRange: getRandomIntInRange,
     addSSMLBreak: addSSMLBreak,
+    getKeyFromIndexOnMap: getKeyFromIndexOnMap,
   },
+
   AlexaUtils: {
     supportsDisplay: supportsDisplay,
     supportsAPL: supportsAPL,

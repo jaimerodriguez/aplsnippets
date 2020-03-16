@@ -72,18 +72,6 @@
             "wait",
             "more time"
           ]
-        },
-        {
-          "name": "PlayIntent",
-          "slots": [
-            {
-              "name": "StationName",
-              "type": "StationSlotType"
-            }
-          ],
-          "samples": [
-            "Play {StationName}"
-          ]
         }
       ],
       "types": [
@@ -272,24 +260,9 @@
             }
           ],
           "name": "PagesSlotType"
-        },
-        {
-          "values": [
-            {
-              "id": "659",
-              "name": {
-                "value": "Smooth Jazz 102.7 HD2",
-                "synonyms": [
-                  "jazz one oh two point seven",
-                  "WNEWHD2"
-                ]
-              }
-            }
-          ],
-          "name": "StationSlotType"
         }
       ]
     }
   },
-  "version": "61"
+  "version": "6"
 }

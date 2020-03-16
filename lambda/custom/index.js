@@ -42,8 +42,8 @@ const HelpIntentHandler = {
   },
   async  handle(handlerInput) {
     const responseBuilder = handlerInput.responseBuilder;
-    const speechText = await responseBuilder.i18n.s('HELP_INSTRUCTIONS');
-    const reprompt = await responseBuilder.i18n.s('MAINMENU_REPOMPT');
+    const speechText = responseBuilder.i18n.s('HELP_INSTRUCTIONS');
+    const reprompt = responseBuilder.i18n.s('MAINMENU_REPOMPT');
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(reprompt)
@@ -60,7 +60,7 @@ const CancelAndStopIntentHandler = {
   },
   async handle(handlerInput) {
     const responseBuilder = handlerInput.responseBuilder;
-    const speechText = await responseBuilder.i18n.s('GOODBYE');
+    const speechText = responseBuilder.i18n.s('GOODBYE');
     return handlerInput.responseBuilder
       .speak(speechText)
       .withShouldEndSession(true)
@@ -86,7 +86,7 @@ const FallbackIntentHandler = {
   async handle(handlerInput) {
     const responseBuilder = handlerInput.responseBuilder;
     const msg = responseBuilder.i18n.s('FALLBACK_TRIGGERED');
-    const reprompt = await responseBuilder.i18n.s('FALLBACK_RETRY');
+    const reprompt = responseBuilder.i18n.s('FALLBACK_RETRY');
     return handlerInput.responseBuilder
       .speak(msg)
       .reprompt(reprompt)
@@ -103,8 +103,8 @@ const ErrorHandler = {
     console.log(`Error handled: ${msg}`);
     const responseBuilder = handlerInput.responseBuilder;
 
-    const errorMessage = await responseBuilder.i18n.s('ERROR');
-    const reprompt = await responseBuilder.i18n.s('ERROR_REPROMPT');
+    const errorMessage = responseBuilder.i18n.s('ERROR');
+    const reprompt = responseBuilder.i18n.s('ERROR_REPROMPT');
     return responseBuilder
       .speak(errorMessage)
       .reprompt(reprompt)
@@ -139,6 +139,7 @@ const SpinnerScenarioIntentHandler = {
     && handlerInput.requestEnvelope.request.intent.name === 'SpinnerScenarioIntent';
   },
   async handle(handlerInput) {
+    // TODO: Refactor this to a sample specific class
     // TODO: localize
     let nextAngle = Utils.getRandomIntInRange(0, 360);
     //  const responseText = '<speak><audio src="soundbank://soundlibrary/toys_games/toys/toys_13"/><audio src="soundbank://soundlibrary/clocks/ticks/ticks_14"/> Spin again by saying spin, or <emphasis level="reduced">say</emphasis><emphasis level="reduced">not</emphasis><break strength="x-weak"/>ready for more time.</speak>';

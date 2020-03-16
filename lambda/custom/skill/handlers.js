@@ -1,6 +1,6 @@
 const Alexa = require('ask-sdk-core');
-const { AlexaUtils } = require('../utils/skillhelpers.js');
-const { pages , menuPage } = require('./demopages');
+const { AlexaUtils, Utils } = require('../utils/skillhelpers.js');
+const { pages, menuPage } = require('./demopages');
 const { SLOTNAMES } = require('./constants');
 
 async function renderPage(handlerInput, pageElement, pageOverrides) {
@@ -8,12 +8,8 @@ async function renderPage(handlerInput, pageElement, pageOverrides) {
   const speechText = pageElement.speechText;
   const reprompt = pageElement.reprompt;
 
-  if (pageElement.name === 'speaklist' & false ) {
-    const retval = await require('./SpeakListResponse.json');
-    return retval;
-  }
-  responseBuilder.speak(speechText);
 
+  responseBuilder.speak(speechText);
 
   if (reprompt && reprompt !== '') {
     responseBuilder.reprompt(reprompt);
@@ -53,12 +49,24 @@ async function renderPage(handlerInput, pageElement, pageOverrides) {
   return responseBuilder.getResponse();
 }
 
+function pageNotFound(handlerInput) {
+  const responseBuilder = handlerInput.responseBuilder;
+
+  const errorMessage = responseBuilder.i18n.s('PAGE_NOT_FOUND');
+  const reprompt = responseBuilder.i18n.s('PAGE_NOT_FOUND_REPROMPT');
+
+  responseBuilder.speak(errorMessage);
+  responseBuilder.reprompt(reprompt);
+
+  return responseBuilder.getResponse();
+}
+
 const localizedPages = [];
 
 async function renderMainMenu(handlerInput) {
   const locale = AlexaUtils.getLocale(handlerInput);
   const resourceManager = handlerInput.responseBuilder.i18n;
-  const pageMetadata = menuPage ;
+  const pageMetadata = menuPage;
   const page = await pageMetadata.resolveToLocale(resourceManager, locale);
 
 
@@ -146,8 +154,6 @@ async function showFeature(handlerInput) {
   if (!pages.has(pageName)) {
     // Find the match based on other criteria ..
     // TODO: extract into utils. it is here for now to find niche cases..
-
-    console.log('page not found');
     const slot = Alexa.getSlot(handlerInput.requestEnvelope, SLOTNAMES.PAGENAME);
     if (slot && slot.resolutions
           && slot.resolutions.resolutionsPerAuthority
@@ -169,15 +175,27 @@ async function showFeature(handlerInput) {
   }
 
   if (!pages.has(pageName)) {
-    pageName = 'notfound';
-    console.assert(pages.has(pageName));
+    // There is no page name, try an index ...
+    const demoIndex = Alexa.getSlotValue(handlerInput.requestEnvelope, SLOTNAMES.PAGEINDEX);
+    if (demoIndex) {
+      try {
+        const numericIndex = parseInt(demoIndex, 10);
+        if (numericIndex < pages.size) {
+          pageName = Utils.getKeyFromIndexOnMap(numericIndex, pages);
+        }
+      } catch (err) {
+        console.log(`Failed to parse ${demoIndex} as a number`);
+      }
+    }
   }
+
 
   if (pages.has(pageName)) {
     const page = await pages.get(pageName).resolveToLocale(resourceManager, locale);
     response = await renderPage(handlerInput, page);
+  } else {
+    response = pageNotFound(handlerInput);
   }
-  // FIXME: handle case when response is null
   return response;
 }
 

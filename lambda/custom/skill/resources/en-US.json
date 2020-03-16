@@ -4,6 +4,9 @@
      
     "HELP_INSTRUCTIONS" : "This is a small collection of APL feature demos. To see a demo just call select it by ordinal or by name" ,  
 
+    "PAGE_NOT_FOUND" : "I did not understand. Say show followed by demo name, for example: show profile or show video to see a feature in action",     
+    "PAGE_NOT_FOUND_REPROMPT" : "<speak>Say <emphasis level=\"moderate\">Show,</emphasis><emphasis level=\"reduced\"> folllowed by what ever demo you want to see </emphasis>.</speak>"  , 
+
     "GOODBYE": "Good bye", 
     "ERROR" : [  
         "There was an error. Please try again"                  

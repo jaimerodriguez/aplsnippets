@@ -41,14 +41,13 @@ class I18nHelper {
       return resource[index];
     }
 
-    console.assert(resource !== null , `missing string: ${name}`);
+    console.assert(resource !== null, `missing string: ${name}`);
     return resource;
   }
 
   get activeLocale() {
     return this.locale;
   }
-
 
 
   sformat(name, ...args) {
