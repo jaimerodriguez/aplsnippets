@@ -79,9 +79,9 @@ In a system with [ASK CLI](https://developer.amazon.com/en-US/docs/alexa/smapi/q
     ```
     ask deploy
     ```
-1. Go to the [Alexa developer portal](https://developer.amazon.com/alexa/console/ask), click on the skill, and then go into the test tab and invoke the skill.
+1. Go to the [Alexa developer portal](https://developer.amazon.com/alexa/console/ask), click on the skill, and then go into the test tab and invoke the skill. Alternatively, you can invoke the skill on any Alexa-enabled devices that are tied to the same Amazon user account as your developer account.
 
-1. Alternatively, you can invoke the skill on any Alexa-enabled devices that are tied to the same Amazon user account as your developer account.
+1. Having a local environment for debugging is super helpful. Follow this [Alexa Blog](https://developer.amazon.com/blogs/alexa/post/77c8f0b9-e9ee-48a9-813f-86cf7bf86747/setup-your-local-environment-for-debugging-an-alexa-skill) to setup your local debug workflow.
 
 
 
