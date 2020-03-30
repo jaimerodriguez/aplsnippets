@@ -15,6 +15,16 @@
                 "--lambdaHandler", "handler"
             ],
             "env" : { "DEBUGLOG" : "verbose" } 
-        }
+        }, 
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Proxy",
+            "program": "${workspaceRoot}/node_modules/bespoken-tools/bin/bst-proxy.js",
+            "args": ["lambda", "index.js"],
+            "cwd": "${workspaceRoot}", 
+            "runtimeExecutable": "/usr/local/bin/node" , 
+            "env" : { "DEBUGLOG" : "verbose" } 
+        },
     ]
 }

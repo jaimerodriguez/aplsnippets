@@ -139,7 +139,7 @@ const pagesMetadata = Object.freeze(new Map(
       'repromptResourceId': 'SHARED_PAGE.GOBACK',
       'document': '../aplsamples/commands/speakitem/transformer/document.json',
       'descriptionResourceId': 'SPEAKITEM_TRANSFORMER_PAGE.DESCRIPTION',
-      'category': 'components',
+      'category': 'commands',
       'token': 'speakItemToken',
       'datasource': '../aplsamples/datasources/singleanimal.json',
     })],

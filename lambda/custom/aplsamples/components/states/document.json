@@ -1,6 +1,6 @@
 {
     "type": "APL",
-    "version": "1.1",
+    "version": "1.3",
     "theme": "dark",
     "resources": [],
     "styles": {
@@ -87,6 +87,18 @@
             }
         } 
     },
+     "onMount" : [
+        {
+            "type": "SetFocus",
+            "componentId": "defaultFocusElementId"
+        },
+        {
+        "type": "SetState",
+        "value": true,
+        "state": "disabled",
+        "componentId" : "disabledElementId"
+        }
+    ], 
     "mainTemplate": {
         "parameters": [
             "payload"
@@ -101,10 +113,10 @@
                 "items" : [ 
                     {
                         "type" : "Frame" , 
-                        "backgroundColor" : "pink" , 
                         "width" : "100%" , 
                         "height" : "100%", 
-                        "position": "absolute"
+                        "position": "absolute", 
+                        "backgroundColor" : "#EEEEEE"
                     }, 
                     { 
                         "type" : "Container" , 
@@ -129,52 +141,22 @@
                             { 
                                 "type" : "button" ,                                   
                                 "text" : "focused" ,
-                                "inheritState" : false, 
+                                "inheritState" : false , 
                                 "id" : "defaultFocusElementId" , 
                                 "spacing" : "2vh" 
                             }, 
                             { 
                                 "type" : "button" ,                                   
                                 "text" : "checked" , 
-                                "checked" : "true" , 
+                                "checked" : true , 
                                 "id" : "checkedElementId" , 
                                 "spacing" : "2vh" 
 
-                            }, 
-                            { 
-                                "when" : "${false}" , 
-                                "type": "TouchWrapper",                       
-                                "spacing" : "2vh" ,  
-                                "id" : "focusElementId" , 
-                                "item" : {   
-                                    "type": "Frame",                         
-                                    "width" : "50vw" , 
-                                    "height" : "20vh" , 
-                                    "style" : "buttonStyle" , 
-                                    "inheritParentState" : true , 
-                                    "item":  
-                                    {                              
-                                        "type" : "Text" , 
-                                        "style" : "buttonTextStyle" , 
-                                        "text" : "raw elements" 
-                                    } 
-                                }               
-                            }
-                        ],
-                        "onMount" : [
-                                {
-                                "type": "SetFocus",
-                                "componentId": "defaultFocusElementId"
-                                },
-                                {
-                                "type": "SetState",
-                                "value": "true",
-                                "state": "disabled",
-                                "componentId" : "disabledElementId"
-                                }
-                                ]
-                            }
-                        ] 
+                            } 
+                        ]
+                       
+                    }
+                ] 
             }
         ]
     }
