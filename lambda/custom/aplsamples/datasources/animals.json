@@ -1,143 +1,142 @@
 {
-    "single": {
-        "name": "Fluffy",
-        "imageSource": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg" , 
-        
-        "properties" :  { 
-            "transformerSourceName" : "<speak> My name is fluffy. Mr Fluffy, the cat! </speak>"  
-        }, 
-        "transformers": [
-            {
-                "inputPath": "transformerSourceName",
-                "outputName": "nameAsSpeech",
-                "transformer": "ssmlToSpeech"
-            }, 
-            {
-                "inputPath": "transformerSourceName",
-                "outputName": "nameAsText",
-                "transformer": "ssmlToText"
-            }
-        ]
-    },
-    "animals": {
-        "items": [
-            {
-                "name": "Fluffy",
-                "type": "cat",
-                "sounds": [
-                    {
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3",
-                        "action": "meow"
-                    },
-                    {
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat02.mp3",
-                        "action": "meow"
-                    }
-                ],
-                "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
-                "images": [
-                    {
-                        "size": "large",
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
-                    }
-                ], 
+  "single": {
+    "name": "Fluffy",
+    "imageSource": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
 
-                "properties" : { 
-                    "nameForSpeakItem" : " <speak>My name is Fluffy</speak>" 
-                }, 
-                "transformers": [
-                    {
-                        "inputPath": "nameForSpeakItem",
-                        "outputName": "nameAsSpeech",
-                        "transformer": "ssmlToSpeech"
-                    }, 
-                    {
-                        "inputPath": "nameForSpeakItem",
-                        "outputName": "nameAsText",
-                        "transformer": "ssmlToText"
-                    }
-                ]
-            },
-            {
-                "name": "Frodo",
-                "type": "dog",
-                "sounds": [
-                    {
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog01.mp3",
-                        "action": "bark"
-                    },
-                    {
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog02.mp3",
-                        "action": "bark"
-                    }
-                ],
-                "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg",
-                "images": [
-                    {
-                        "size": "large",
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg"
-                    }
-                ] , 
-                "properties" : { 
-                    "nameForSpeakItem" : "<speak> My name is Frodo </speak>" 
-                }, 
-                "transformers": [
-                    {
-                        "inputPath": "nameForSpeakItem",
-                        "outputName": "nameAsSpeech",
-                        "transformer": "ssmlToSpeech"
-                    }, 
-                    {
-                        "inputPath": "name",
-                        "outputName": "nameAsText",
-                        "transformer": "ssmlToText"
-                    }
-                ]
-            }, 
-            {
-                "name": "hair ball",
-                "type": "cat",
-                "sounds": [
-                    {
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3",
-                        "action": "meow"
-                    },
-                    {
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat02.mp3",
-                        "action": "meow"
-                    }
-                ],
-                "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
-                "images": [
-                    {
-                        "size": "large",
-                        "url": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
-                    }
-                ],
-                "properties" : { 
-                    "nameForSpeakItem" : "<speak>My name is not really hairball</speak>" 
-                }, 
-                "transformers": [
-                    {
-                        "inputPath": "nameForSpeakItem",
-                        "outputName": "nameAsSpeech",
-                        "transformer": "ssmlToSpeech"
-                    }, 
-                    {
-                        "inputPath": "name",
-                        "outputName": "nameAsText",
-                        "transformer": "ssmlToText"
-                    }
-                ]
-            }
-        ]
-        , 
+    "properties": {
+      "transformerSourceName": "<speak> My name is fluffy. Mr Fluffy, the cat! </speak>"
+    },
+    "transformers": [
+      {
+        "inputPath": "transformerSourceName",
+        "outputName": "nameAsSpeech",
+        "transformer": "ssmlToSpeech"
+      },
+      {
+        "inputPath": "transformerSourceName",
+        "outputName": "nameAsText",
+        "transformer": "ssmlToText"
+      }
+    ]
+  },
+  "animals": {
+    "items": [
+      {
+        "name": "Fluffy",
+        "type": "cat",
+        "sounds": [
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3",
+            "action": "meow"
+          },
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat02.mp3",
+            "action": "meow"
+          }
+        ],
+        "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
+        "images": [
+          {
+            "size": "large",
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
+          }
+        ],
+
+        "properties": {
+          "nameForSpeakItem": " <speak>My name is Fluffy</speak>"
+        },
         "transformers": [
-            {
-                "transformer": "ssmlToSpeech",
-                "inputPath": "animals.items[*].nameForSpeakItem",
-                "outputName": "nameAsSpeech"
-            }
+          {
+            "inputPath": "nameForSpeakItem",
+            "outputName": "nameAsSpeech",
+            "transformer": "ssmlToSpeech"
+          },
+          {
+            "inputPath": "nameForSpeakItem",
+            "outputName": "nameAsText",
+            "transformer": "ssmlToText"
+          }
         ]
-    }
+      },
+      {
+        "name": "Frodo",
+        "type": "dog",
+        "sounds": [
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog01.mp3",
+            "action": "bark"
+          },
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog02.mp3",
+            "action": "bark"
+          }
+        ],
+        "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg",
+        "images": [
+          {
+            "size": "large",
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg"
+          }
+        ],
+        "properties": {
+          "nameForSpeakItem": "<speak> My name is Frodo </speak>"
+        },
+        "transformers": [
+          {
+            "inputPath": "nameForSpeakItem",
+            "outputName": "nameAsSpeech",
+            "transformer": "ssmlToSpeech"
+          },
+          {
+            "inputPath": "name",
+            "outputName": "nameAsText",
+            "transformer": "ssmlToText"
+          }
+        ]
+      },
+      {
+        "name": "hair ball",
+        "type": "cat",
+        "sounds": [
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3",
+            "action": "meow"
+          },
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat02.mp3",
+            "action": "meow"
+          }
+        ],
+        "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
+        "images": [
+          {
+            "size": "large",
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
+          }
+        ],
+        "properties": {
+          "nameForSpeakItem": "<speak>My name is not really hairball</speak>"
+        },
+        "transformers": [
+          {
+            "inputPath": "nameForSpeakItem",
+            "outputName": "nameAsSpeech",
+            "transformer": "ssmlToSpeech"
+          },
+          {
+            "inputPath": "name",
+            "outputName": "nameAsText",
+            "transformer": "ssmlToText"
+          }
+        ]
+      }
+    ],
+    "transformers": [
+      {
+        "transformer": "ssmlToSpeech",
+        "inputPath": "animals.items[*].nameForSpeakItem",
+        "outputName": "nameAsSpeech"
+      }
+    ]
+  }
 }

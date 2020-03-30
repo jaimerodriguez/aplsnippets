@@ -1,59 +1,56 @@
 {
-    "type": "APL",
-    "version": "1.0",
-    "theme": "dark",
-    "resources": [],
-    "styles": {},
-    "layouts": {},
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": [
+  "type": "APL",
+  "version": "1.0",
+  "theme": "dark",
+  "resources": [],
+  "styles": {},
+  "layouts": {},
+  "mainTemplate": {
+    "parameters": [ "payload" ],
+    "items": [
+      {
+        "type": "Frame",
+        "width": "100vw",
+        "height": "100vh",
+        "backgroundColor": "red",
+        "item": {
+          "type": "Container",
+          "width": "100vw",
+          "height": "100vh",
+          "direction": "row",
+          "items": [
             {
-                "type": "Frame",
-                "width" : "100vw", 
-                "height" : "100vh",                                
-                "backgroundColor" : "red" ,                
-                "item":  
-                { 
-                    "type": "Container",
-                    "width" : "100vw", 
-                    "height" : "100vh", 
-                    "direction" : "row" , 
-                    "items": [
-                        {
-                            "type": "Image",                                                                       
-                            "source": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
-                            "scale": "best-fit",                        
-                            "width": "50vw",
-                            "height": "100vh"                         
-                        }, 
-                        {                             
-                            "type" : "Text" , 
-                            "text" : "${payload.single.name}" ,                                  
-                            "width" : "50vw" ,                                  
-                            "position" : "absolute", 
-                            "textAlign" : "center" 
-                        }, 
-                        {
-                            "type": "Image",                         
-                            "source": "${payload.animals.items[0].largeImage}",
-                            "scale": "best-fit",                        
-                            "width": "50vw",
-                            "height": "100vh"                         
-                        }, 
-                        {                          
-                            "type" : "Text" , 
-                            "text" : "${payload.animals.items[0].name}"  ,                        
-                            "width" : "50vw" , 
-                            "position" : "absolute"  , 
-                            "left" : "50vw", 
-                            "textAlign" : "center"                 
-                        } 
-                    ] 
-                }                                     
+              "type": "Image",
+              "source": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
+              "scale": "best-fit",
+              "width": "50vw",
+              "height": "100vh"
+            },
+            {
+              "type": "Text",
+              "text": "${payload.single.name}",
+              "width": "50vw",
+              "position": "absolute",
+              "textAlign": "center"
+            },
+            {
+              "type": "Image",
+              "source": "${payload.animals.items[0].largeImage}",
+              "scale": "best-fit",
+              "width": "50vw",
+              "height": "100vh"
+            },
+            {
+              "type": "Text",
+              "text": "${payload.animals.items[0].name}",
+              "width": "50vw",
+              "position": "absolute",
+              "left": "50vw",
+              "textAlign": "center"
             }
-        ]
-    }
+          ]
+        }
+      }
+    ]
+  }
 }

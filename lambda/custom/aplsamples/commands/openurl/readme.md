@@ -1,10 +1,10 @@
 # APL OpenURL
 
-The `OpenURL` command, if successful, opens the specified URL in a web browser or other application on the device.  
+The `OpenURL` command, if successful, opens the specified URL in a web browser or other application on the device.
 
 ## Sample description
 
-Use of OpenURL and error handling around it.  
+Use of OpenURL and error handling around it.
 
 ## Tips/Notes
 
