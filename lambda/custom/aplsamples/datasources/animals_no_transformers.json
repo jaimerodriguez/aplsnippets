@@ -1,0 +1,73 @@
+{
+  "single": {
+    "name": "Fluffy",
+    "imageSource": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
+  },
+  "animals": {
+    "items": [
+      {
+        "name": "Fluffy",
+        "type": "cat",
+        "sounds": [
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3",
+            "action": "meow"
+          },
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat02.mp3",
+            "action": "meow"
+          }
+        ],
+        "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
+        "images": [
+          {
+            "size": "large",
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Frodo",
+        "type": "dog",
+        "sounds": [
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog01.mp3",
+            "action": "bark"
+          },
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/dog02.mp3",
+            "action": "bark"
+          }
+        ],
+        "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg",
+        "images": [
+          {
+            "size": "large",
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/dog01_1200.jpg"
+          }
+        ]
+      },
+      {
+        "name": "hair ball",
+        "type": "cat",
+        "sounds": [
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat01.mp3",
+            "action": "meow"
+          },
+          {
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/audio/cat02.mp3",
+            "action": "meow"
+          }
+        ],
+        "largeImage": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg",
+        "images": [
+          {
+            "size": "large",
+            "url": "https://aplsnippets.s3.amazonaws.com/assets/images/cat01_1200.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}

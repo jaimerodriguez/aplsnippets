@@ -292,7 +292,21 @@ const pagesMetadata = Object.freeze(
         descriptionResourceId: 'DATABINDING_PAGE.DESCRIPTION',
         category: 'component',
         token: 'databindingToken',
-        datasource: '../aplsamples/datasources/animals.json',
+        datasource: '../aplsamples/datasources/animals_no_transformers.json',
+      }),
+    ],
+
+    [
+      'sequence',
+      new APLSamplePage({
+        nameResourceId: 'DATABINDING_SEQUENCE_PAGE.NAME',
+        speechTextResourceId: 'DATABINDING_SEQUENCE_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/databinding/sequence/databinding_sequence.json',
+        descriptionResourceId: 'DATABINDING_SEQUENCE_PAGE.DESCRIPTION',
+        category: 'component',
+        token: 'databindingSequenceToken',
+        datasource: '../aplsamples/datasources/animals_no_transformers.json',
       }),
     ],
   ])
