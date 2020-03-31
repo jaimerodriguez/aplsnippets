@@ -1,5 +1,3 @@
-
-
 class APLSamplePage {
   constructor(obj) {
     this.name = obj.name || '';
@@ -25,7 +23,9 @@ class APLSamplePage {
   }
 
   async resolveToLocale(resourcemanager, locale) {
-    if (!resourcemanager || !locale) { throw new Error('ResourceManager & locale are required for localization'); }
+    if (!resourcemanager || !locale) {
+      throw new Error('ResourceManager & locale are required for localization');
+    }
 
     const publicCopy = {
       id: this.id,
@@ -58,200 +58,269 @@ class APLSamplePage {
   }
 }
 
-const pagesMetadata = Object.freeze(new Map(
-  [
+const pagesMetadata = Object.freeze(
+  new Map([
+    [
+      'text',
+      new APLSamplePage({
+        nameResourceId: 'TEXT_PAGE.NAME',
+        speechTextResourceId: 'TEXT_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/components/text/document.json',
+        descriptionResourceId: 'TEXT_PAGE.DESCRIPTION',
+        category: 'components',
+      }),
+    ],
 
-    ['text', new APLSamplePage({
-      'nameResourceId': 'TEXT_PAGE.NAME',
-      'speechTextResourceId': 'TEXT_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/components/text/document.json',
-      'descriptionResourceId': 'TEXT_PAGE.DESCRIPTION',
-      'category': 'components',
-    })],
+    [
+      'video',
+      new APLSamplePage({
+        nameResourceId: 'VIDEO_PAGE.NAME',
+        speechTextResourceId: 'VIDEO_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/components/video/document.json',
+        descriptionResourceId: 'VIDEO_PAGE.DESCRIPTION',
+        category: 'components',
+      }),
+    ],
 
+    [
+      'image',
+      new APLSamplePage({
+        nameResourceId: 'IMAGE_PAGE.NAME',
+        speechTextResourceId: 'IMAGE_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/components/image/document.json',
+        descriptionResourceId: 'IMAGE_PAGE.DESCRIPTION',
+        category: 'component',
+      }),
+    ],
 
-    ['video', new APLSamplePage({
-      'nameResourceId': 'VIDEO_PAGE.NAME',
-      'speechTextResourceId': 'VIDEO_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/components/video/document.json',
-      'descriptionResourceId': 'VIDEO_PAGE.DESCRIPTION',
-      'category': 'components',
-    })],
+    [
+      'touchwrapper',
+      new APLSamplePage({
+        nameResourceId: 'TOUCHWRAPPER_PAGE.NAME',
+        speechTextResourceId: 'TOUCHWRAPPER_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/components/touchwrapper/document.json',
+        descriptionResourceId: 'TOUCHWRAPPER_PAGE.DESCRIPTION',
+        category: 'components',
+      }),
+    ],
 
-    ['image', new APLSamplePage({
-      'nameResourceId': 'IMAGE_PAGE.NAME',
-      'speechTextResourceId': 'IMAGE_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/components/image/document.json',
-      'descriptionResourceId': 'IMAGE_PAGE.DESCRIPTION',
-      'category': 'component',
+    [
+      'states',
+      new APLSamplePage({
+        nameResourceId: 'STATES_PAGE.NAME',
+        speechTextResourceId: 'STATES_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/components/states/document.json',
+        descriptionResourceId: 'STATES_PAGE.DESCRIPTION',
+        category: 'component',
+        token: 'statesToken',
+      }),
+    ],
 
-    })],
+    [
+      'speakitem',
+      new APLSamplePage({
+        nameResourceId: 'SPEAKITEM_SPEECH_PAGE.NAME',
+        speechTextResourceId: 'SPEAKITEM_SPEECH_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/commands/speakitem/speechfile/document.json',
+        descriptionResourceId: 'SPEAKITEM_SPEECH_PAGE.DESCRIPTION',
+        category: 'components',
+        token: 'speakItemToken',
+      }),
+    ],
 
-    ['touchwrapper', new APLSamplePage({
-      'nameResourceId': 'TOUCHWRAPPER_PAGE.NAME',
-      'speechTextResourceId': 'TOUCHWRAPPER_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/components/touchwrapper/document.json',
-      'descriptionResourceId': 'TOUCHWRAPPER_PAGE.DESCRIPTION',
-      'category': 'components',
+    [
+      'speaklist',
+      new APLSamplePage({
+        nameResourceId: 'SPEAKLIST_PAGE.NAME',
+        speechTextResourceId: 'SPEAKLIST_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/commands/speaklist/document.json',
+        datasource: '../aplsamples/datasources/animals_speaklist_shape.json',
+        descriptionResourceId: 'SPEAKLIST_PAGE.DESCRIPTION',
+        token: 'speakListToken',
+        category: 'components',
+      }),
+    ],
 
-    })],
+    [
+      'transformer',
+      new APLSamplePage({
+        nameResourceId: 'SPEAKITEM_TRANSFORMER_PAGE.NAME',
+        speechTextResourceId: 'SPEAKITEM_TRANSFORMER_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/commands/speakitem/transformer/document.json',
+        descriptionResourceId: 'SPEAKITEM_TRANSFORMER_PAGE.DESCRIPTION',
+        category: 'commands',
+        token: 'speakItemToken',
+        datasource: '../aplsamples/datasources/singleanimal.json',
+      }),
+    ],
 
-    ['states', new APLSamplePage({
-      'nameResourceId': 'STATES_PAGE.NAME',
-      'speechTextResourceId': 'STATES_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/components/states/document.json',
-      'descriptionResourceId': 'STATES_PAGE.DESCRIPTION',
-      'category': 'component',
-      'token': 'statesToken',
-    })],
+    [
+      'pager',
+      new APLSamplePage({
+        nameResourceId: 'PAGER_PAGE.NAME',
+        speechTextResourceId: 'PAGER_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/components/pager/document.json',
+        descriptionResourceId: 'PAGER_PAGE.DESCRIPTION',
+        category: 'components',
+        token: 'pagerToken',
+      }),
+    ],
 
-    ['speakitem', new APLSamplePage({
-      'nameResourceId': 'SPEAKITEM_SPEECH_PAGE.NAME',
-      'speechTextResourceId': 'SPEAKITEM_SPEECH_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/commands/speakitem/speechfile/document.json',
-      'descriptionResourceId': 'SPEAKITEM_SPEECH_PAGE.DESCRIPTION',
-      'category': 'components',
-      'token': 'speakItemToken',
-    })],
+    [
+      'openurl',
+      new APLSamplePage({
+        nameResourceId: 'OPENURL_PAGE.NAME',
+        speechTextResourceId: 'OPENURL_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/commands/openurl/document.json',
+        descriptionResourceId: 'OPENURL_PAGE.DESCRIPTION',
+        category: 'command',
 
-    ['speaklist', new APLSamplePage({
-      'nameResourceId': 'SPEAKLIST_PAGE.NAME',
-      'speechTextResourceId': 'SPEAKLIST_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/commands/speaklist/document.json',
-      'datasource': '../aplsamples/datasources/animals_speaklist_shape.json',
-      'descriptionResourceId': 'SPEAKLIST_PAGE.DESCRIPTION',
-      'token': 'speakListToken',
-      'category': 'components',
+        token: 'openURLToken',
+      }),
+    ],
 
-    })],
+    [
+      'cached_pager',
+      new APLSamplePage({
+        nameResourceId: 'CACHED_PAGER_PAGE.NAME',
+        speechTextResourceId: 'CACHED_PAGER_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/scenarios/cachedPager/document.json',
+        descriptionResourceId: 'CACHED_PAGER_PAGE.DESCRIPTION',
+        category: 'scenario',
+        token: 'cachedPagerToken',
+      }),
+    ],
 
+    [
+      'animation',
+      new APLSamplePage({
+        nameResourceId: 'ANIMATION_PAGE.NAME',
+        speechTextResourceId: 'ANIMATION_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/animation/document.json',
+        descriptionResourceId: 'ANIMATION_PAGE.DESCRIPTION',
+        category: 'component',
 
-    ['transformer', new APLSamplePage({
-      'nameResourceId': 'SPEAKITEM_TRANSFORMER_PAGE.NAME',
-      'speechTextResourceId': 'SPEAKITEM_TRANSFORMER_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/commands/speakitem/transformer/document.json',
-      'descriptionResourceId': 'SPEAKITEM_TRANSFORMER_PAGE.DESCRIPTION',
-      'category': 'commands',
-      'token': 'speakItemToken',
-      'datasource': '../aplsamples/datasources/singleanimal.json',
-    })],
+        token: 'animationToken',
+      }),
+    ],
 
-    ['pager', new APLSamplePage({
-      'nameResourceId': 'PAGER_PAGE.NAME',
-      'speechTextResourceId': 'PAGER_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/components/pager/document.json',
-      'descriptionResourceId': 'PAGER_PAGE.DESCRIPTION',
-      'category': 'components',
-      'token': 'pagerToken',
-    })],
+    [
+      'profile',
+      new APLSamplePage({
+        nameResourceId: 'PROFILE_PAGE.NAME',
+        speechTextResourceId: 'PROFILE_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/layouts/profile/document.json',
+        descriptionResourceId: 'PROFILE_PAGE.DESCRIPTION',
+        category: 'device',
+      }),
+    ],
 
-    ['openurl', new APLSamplePage({
-      'nameResourceId': 'OPENURL_PAGE.NAME',
-      'speechTextResourceId': 'OPENURL_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/commands/openurl/document.json',
-      'descriptionResourceId': 'OPENURL_PAGE.DESCRIPTION',
-      'category': 'command',
+    [
+      'environment',
+      new APLSamplePage({
+        nameResourceId: 'ENVIRONMENT_PAGE.NAME',
+        speechTextResourceId: 'ENVIRONMENT_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/layouts/environment/document.json',
+        descriptionResourceId: 'ENVIRONMENT_PAGE.DESCRIPTION',
+        category: 'basic',
+      }),
+    ],
 
-      'token': 'openURLToken',
-    })],
+    [
+      'spinner',
+      new APLSamplePage({
+        nameResourceId: 'SPINNER_PAGE.NAME',
+        speechTextResourceId: 'SPINNER_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/scenarios/spinner/document.json',
+        descriptionResourceId: 'SPINNER_PAGE.DESCRIPTION',
+        category: 'component',
+        token: 'spinnerToken',
+        datasource: '../aplsamples/scenarios/spinner/initialDataSource.json',
+      }),
+    ],
 
-    ['cached_pager', new APLSamplePage({
-      'nameResourceId': 'CACHED_PAGER_PAGE.NAME',
-      'speechTextResourceId': 'CACHED_PAGER_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/scenarios/cachedPager/document.json',
-      'descriptionResourceId': 'CACHED_PAGER_PAGE.DESCRIPTION',
-      'category': 'scenario',
-      'token': 'cachedPagerToken',
-    })],
+    [
+      'tictactoe',
+      new APLSamplePage({
+        nameResourceId: 'TICTACTOE_PAGE.NAME',
+        speechTextResourceId: 'TICTACTOE_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/scenarios/tictactoe/document.json',
+        descriptionResourceId: 'TICTACTOE_PAGE.DESCRIPTION',
+        category: 'basic',
 
-    ['animation', new APLSamplePage({
-      'nameResourceId': 'ANIMATION_PAGE.NAME',
-      'speechTextResourceId': 'ANIMATION_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/animation/document.json',
-      'descriptionResourceId': 'ANIMATION_PAGE.DESCRIPTION',
-      'category': 'component',
+        datasource: '../aplsamples/scenarios/tictactoe/data.json',
+      }),
+    ],
 
-      'token': 'animationToken',
-    })],
+    [
+      'videotransport',
+      new APLSamplePage({
+        nameResourceId: 'VIDEOTRANSPORT_PAGE.NAME',
+        speechTextResourceId: 'VIDEOTRANSPORT_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/layouts/videotransport/document.json',
+        descriptionResourceId: 'VIDEOTRANSPORT_PAGE.DESCRIPTION',
+        category: 'basic',
 
-    ['profile', new APLSamplePage({
-      'nameResourceId': 'PROFILE_PAGE.NAME',
-      'speechTextResourceId': 'PROFILE_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/layouts/profile/document.json',
-      'descriptionResourceId': 'PROFILE_PAGE.DESCRIPTION',
-      'category': 'device',
-    })],
+        datasource: '../aplsamples/scenarios/tictactoe/data.json',
+      }),
+    ],
 
+    [
+      'databinding',
+      new APLSamplePage({
+        nameResourceId: 'DATABINDING_PAGE.NAME',
+        speechTextResourceId: 'DATABINDING_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/databinding/basics/databinding_basic.json',
+        descriptionResourceId: 'DATABINDING_PAGE.DESCRIPTION',
+        category: 'component',
+        token: 'databindingToken',
+        datasource: '../aplsamples/datasources/animals_no_transformers.json',
+      }),
+    ],
 
-    ['environment', new APLSamplePage({
-      'nameResourceId': 'ENVIRONMENT_PAGE.NAME',
-      'speechTextResourceId': 'ENVIRONMENT_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/layouts/environment/document.json',
-      'descriptionResourceId': 'ENVIRONMENT_PAGE.DESCRIPTION',
-      'category': 'basic',
-
-    })],
-
-    ['spinner', new APLSamplePage({
-      'nameResourceId': 'SPINNER_PAGE.NAME',
-      'speechTextResourceId': 'SPINNER_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/scenarios/spinner/document.json',
-      'descriptionResourceId': 'SPINNER_PAGE.DESCRIPTION',
-      'category': 'component',
-      'token': 'spinnerToken',
-      'datasource': '../aplsamples/scenarios/spinner/initialDataSource.json',
-    })],
-
-    ['tictactoe', new APLSamplePage({
-      'nameResourceId': 'TICTACTOE_PAGE.NAME',
-      'speechTextResourceId': 'TICTACTOE_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/scenarios/tictactoe/document.json',
-      'descriptionResourceId': 'TICTACTOE_PAGE.DESCRIPTION',
-      'category': 'basic',
-
-      'datasource': '../aplsamples/scenarios/tictactoe/data.json',
-    })],
-
-    ['videotransport', new APLSamplePage({
-      'nameResourceId': 'VIDEOTRANSPORT_PAGE.NAME',
-      'speechTextResourceId': 'VIDEOTRANSPORT_PAGE.TEXT',
-      'repromptResourceId': 'SHARED_PAGE.GOBACK',
-      'document': '../aplsamples/layouts/videotransport/document.json',
-      'descriptionResourceId': 'VIDEOTRANSPORT_PAGE.DESCRIPTION',
-      'category': 'basic',
-
-      'datasource': '../aplsamples/scenarios/tictactoe/data.json',
-    })],
-  ],
-));
-
+    [
+      'sequence',
+      new APLSamplePage({
+        nameResourceId: 'DATABINDING_SEQUENCE_PAGE.NAME',
+        speechTextResourceId: 'DATABINDING_SEQUENCE_PAGE.TEXT',
+        repromptResourceId: 'SHARED_PAGE.GOBACK',
+        document: '../aplsamples/databinding/sequence/databinding_sequence.json',
+        descriptionResourceId: 'DATABINDING_SEQUENCE_PAGE.DESCRIPTION',
+        category: 'component',
+        token: 'databindingSequenceToken',
+        datasource: '../aplsamples/datasources/animals_no_transformers.json',
+      }),
+    ],
+  ])
+);
 
 const menuPage = new APLSamplePage({
-  'nameResourceId': 'MAINMENU_PAGE.NAME',
-  'speechTextResourceId': 'MAINMENU_PAGE.TEXT',
-  'repromptResourceId': 'MAINMENU_PAGE.REPROMPT',
-  'document': './main_menu/document.json',
-  'datasource': './main_menu/design.datasource.json',
-  'descriptionResourceId': 'MAINMENU_PAGE.DESCRIPTION',
-  'category': 'nav',
+  nameResourceId: 'MAINMENU_PAGE.NAME',
+  speechTextResourceId: 'MAINMENU_PAGE.TEXT',
+  repromptResourceId: 'MAINMENU_PAGE.REPROMPT',
+  document: './main_menu/document.json',
+  datasource: './main_menu/design.datasource.json',
+  descriptionResourceId: 'MAINMENU_PAGE.DESCRIPTION',
+  category: 'nav',
 });
-
 
 module.exports = {
   APLSamplePage: APLSamplePage,

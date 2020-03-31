@@ -52,82 +52,63 @@
         {
           "name": "SpinnerScenarioIntent",
           "slots": [],
-          "samples": [
-            "random spin",
-            "move needle",
-            "spin please",
-            "please spin",
-            "spin again",
-            "spin"
-          ]
+          "samples": [ "random spin", "move needle", "spin please", "please spin", "spin again", "spin" ]
         },
         {
           "name": "MoreTimeIntent",
           "slots": [],
-          "samples": [
-            "hold on",
-            "extend time",
-            "time out",
-            "time please ",
-            "wait",
-            "more time"
-          ]
+          "samples": [ "hold on", "extend time", "time out", "time please ", "wait", "more time" ]
         }
       ],
       "types": [
         {
           "values": [
             {
+              "id": "sequence",
+              "name": {
+                "value": "sequence"
+              }
+            },
+            {
+              "id": "databinding",
+              "name": {
+                "value": "data binding",
+                "synonyms": [ "data", "bindings", "binding" ]
+              }
+            },
+            {
               "id": "videotransport",
               "name": {
                 "value": "transport",
-                "synonyms": [
-                  "video transport",
-                  "video transport controls",
-                  "transport controls"
-                ]
+                "synonyms": [ "video transport", "video transport controls", "transport controls" ]
               }
             },
             {
               "id": "tictactoe",
               "name": {
                 "value": "tic tac toe",
-                "synonyms": [
-                  "exes and ohs",
-                  "tic tac ",
-                  "tick tack",
-                  "tick tack toe"
-                ]
+                "synonyms": [ "exes and ohs", "tic tac ", "tick tack", "tick tack toe" ]
               }
             },
             {
               "id": "environment",
               "name": {
                 "value": "environment",
-                "synonyms": [
-                  "environment variables",
-                  "environmental "
-                ]
+                "synonyms": [ "environment variables", "environmental " ]
               }
             },
             {
               "id": "openurl",
               "name": {
                 "value": "openurl",
-                "synonyms": [
-                  "open URL",
-                  "open u. r. l. command",
-                  "open u. r. l."
-                ]
+                "synonyms": [ "open URL", "open u. r. l. command", "open u. r. l." ]
               }
             },
             {
               "id": "spinner",
               "name": {
                 "value": "spinner",
-                "synonyms": [
-                  "spinner animation"
-                ]
+                "synonyms": [ "spinner animation" ]
               }
             },
             {
@@ -140,122 +121,84 @@
               "id": "pager",
               "name": {
                 "value": "pager",
-                "synonyms": [
-                  "autopage",
-                  "page",
-                  "auto page"
-                ]
+                "synonyms": [ "autopage", "page", "auto page" ]
               }
             },
             {
               "id": "transformer",
               "name": {
                 "value": "transformer",
-                "synonyms": [
-                  "speakitem transformer"
-                ]
+                "synonyms": [ "speakitem transformer" ]
               }
             },
             {
               "id": "speaklist",
               "name": {
                 "value": "speaklist",
-                "synonyms": [
-                  "speak list",
-                  "speaklist"
-                ]
+                "synonyms": [ "speak list", "speaklist" ]
               }
             },
             {
               "id": "touchwrapper",
               "name": {
                 "value": "touchwrapper",
-                "synonyms": [
-                  "rapper",
-                  "touch rapper",
-                  "touch wrapper",
-                  "touch",
-                  "touchwrapper"
-                ]
+                "synonyms": [ "rapper", "touch rapper", "touch wrapper", "touch", "touchwrapper" ]
               }
             },
             {
               "id": "video",
               "name": {
                 "value": "video",
-                "synonyms": [
-                  "movie",
-                  "video player",
-                  "playback",
-                  "video"
-                ]
+                "synonyms": [ "movie", "video player", "playback", "video" ]
               }
             },
             {
               "id": "text",
               "name": {
                 "value": "text",
-                "synonyms": [
-                  "text"
-                ]
+                "synonyms": [ "text" ]
               }
             },
             {
               "id": "main_menu",
               "name": {
                 "value": "menu",
-                "synonyms": [
-                  "feature list",
-                  "main menu"
-                ]
+                "synonyms": [ "feature list", "main menu" ]
               }
             },
             {
               "id": "speakitem",
               "name": {
                 "value": "speakitem",
-                "synonyms": [
-                  "spick item",
-                  "speak item"
-                ]
+                "synonyms": [ "spick item", "speak item" ]
               }
             },
             {
               "id": "header",
               "name": {
                 "value": "header",
-                "synonyms": [
-                  "alexa header",
-                  "headers"
-                ]
+                "synonyms": [ "alexa header", "headers" ]
               }
             },
             {
               "id": "layout",
               "name": {
                 "value": "layouts",
-                "synonyms": [
-                  "layout"
-                ]
+                "synonyms": [ "layout" ]
               }
             },
             {
               "id": "image",
               "name": {
                 "value": "image",
-                "synonyms": [
-                  "images",
-                  "photo"
-                ]
+                "synonyms": [ "images", "photo" ]
               }
             },
             {
               "id": "profile",
               "name": {
                 "value": "profile",
-                "synonyms": [
-                  "device properties"
-                ]
+                "synonyms": [ "device properties" ]
               }
             }
           ],

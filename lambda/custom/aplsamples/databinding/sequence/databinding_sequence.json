@@ -1,60 +1,53 @@
 {
-    "type": "APL",
-    "version": "1.3",
-    "theme": "dark",
-    "resources": [],
-    "styles": {},
-    "layouts": {
-            "listItem" :
-            { 
-                "parameters": [
-                    "image",
-                    "name" 
-                ],
-                "item": 
-                {   
-                    "type": "Container",
-                    "width" : "50vw", 
-                    "height" : "100vh", 
-                    "direction" : "row" , 
-                    "items": [
-                        {
-                            "type": "Image",                                                                       
-                            "source": "${data.images[0].url}",
-                            "scale": "best-fit",                        
-                            "width": "50vw",
-                            "height": "100vh"                         
-                        }, 
-                        {                             
-                            "type" : "Text" , 
-                            "text" : "${data.name}" ,                                  
-                            "width" : "50vw" ,                                  
-                            "position" : "absolute", 
-                            "textAlign" : "center" 
-                        }]
-                }
-            }
-    },
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
+  "type": "APL",
+  "version": "1.3",
+  "theme": "dark",
+  "resources": [],
+  "styles": {},
+  "layouts": {
+    "listItem": {
+      "parameters": [ "image", "name" ],
+      "item": {
+        "type": "Container",
+        "width": "50vw",
+        "height": "100vh",
+        "direction": "row",
         "items": [
-            {
-                "type": "Sequence",
-                "width" : "100vw", 
-                "height" : "100vh" ,
-                "scrollDirection" : "horizontal", 
-                "data" : "${payload.animals.items}"  ,                          
-                "items": [
-                    {
-                        "type": "listItem",
-                        "image": "${largeImage}",
-                        "name": "${name}"
-                        
-                    }
-                ]                                                      
-            }
+          {
+            "type": "Image",
+            "source": "${data.images[0].url}",
+            "scale": "best-fit",
+            "width": "50vw",
+            "height": "100vh"
+          },
+          {
+            "type": "Text",
+            "text": "${data.name}",
+            "width": "50vw",
+            "position": "absolute",
+            "textAlign": "center"
+          }
         ]
+      }
     }
+  },
+  "mainTemplate": {
+    "parameters": [ "payload" ],
+    "items": [
+      {
+        "type": "Sequence",
+        "width": "100vw",
+        "height": "100vh",
+        "scrollDirection": "horizontal",
+        "data": "${payload.animals.items}",
+        "items": [
+          {
+            "type": "listItem",
+            "image": "${largeImage}",
+            "name": "${name}"
+          }
+        ]
+      }
+    ]
+  }
 }
