@@ -3,14 +3,13 @@ This repo is a collection of snippets for developers building Alexa APL skills.
 
 
 ## Goals:
-Each snippet is a working APL document you can use to  understand an APL feature. Use the snippet to expand your understanding for that feature.
+Each snippet is a working APL document you can use to  understand an APL feature. Use the snippet to explore the feature.
 
 
 ## Non-goals:
-- This is not a comprehensive introduction to APL.  It is aimed at intermediate developers who are already familiar with the basics.
+- This is not an introduction to APL.  It is aimed at intermediate developers who are already familiar with the basics.
 - If you are just started, try the [visual cakewalk](https://alexa.design/apl-cake-walk) course first.
-
-- The snippets are not clean (or polished) enough for copy/paste reuse.
+- The snippets are not clean (or polished) enough for copy/paste reuse. We kept them simple for easier learning. 
 
 ## Repo structure
 This is a working Alexa skill. You can clone it and run it (see instructions below).
@@ -86,4 +85,4 @@ In a system with [ASK CLI](https://developer.amazon.com/en-US/docs/alexa/smapi/q
 
 
 ## Contributing to the sample (or the docs)
-If you want to contribute a new snippet, or you want to contribute to the (very incomplete) documentation, you are very welcome to do so. Please submit a pull request.
+If you want to contribute a new snippet, or you want to contribute to the documentation, please submit a pull request.
