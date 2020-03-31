@@ -28,3 +28,4 @@ Brief instructions on how to preview this page.  Here is a useful start:
 
 - [APL Data Sources](https://developer.amazon.com/en-US/docs/alexa/alexa-presentation-language/apl-data-source.html)
 - [APL Data-Binding Syntax](https://developer.amazon.com/en-US/docs/alexa/alexa-presentation-language/apl-data-binding-syntax.html)
+- [APL Data-Binding Evaluation](https://developer.amazon.com/en-US/docs/alexa/alexa-presentation-language/apl-data-binding-evaluation-v1.html)
