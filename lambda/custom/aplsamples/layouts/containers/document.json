@@ -1,0 +1,122 @@
+{
+    "type": "APL",
+    "version": "1.3",
+    "settings": {},
+    "theme": "dark",
+    "import": [],
+    "resources": [
+        { 
+            "colors" : {
+               "SkillBackgroundColor" : "yellow" , 
+               "SkillTextColor" : "white" 
+            }
+        }, 
+        { 
+            "dimensions" : { 
+                 "sharedFontSize" : "24dp"
+            } 
+        } 
+        
+        ],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {       
+        "FrameChild" : 
+        { 
+            "item" : 
+            {
+                "type" : "Frame", 
+                "backgroundColor" : "green" , 
+                "width" : "40%", 
+                "height" : "90%" , 
+                "item" : { 
+                        "type" : "Text" , 
+                        "color" : "black" , 
+                        "text" : "Center of Frame Child (green background)" , 
+                        "fontSize" : "@sharedFontSize", 
+                        "textAlign" : "center" , 
+                        "textAlignVertical" : "center" , 
+                        "width" : "100%", 
+                        "height": "100%" 
+                    }
+            }
+        }, 
+        "FrameGrandChild" : 
+        { 
+            "item" : 
+            {
+                "type" : "Frame", 
+                "backgroundColor" : "blue" , 
+                "width" : "100%", 
+                "height" : "100%"  , 
+                "item": 
+                { 
+                    "type" : "Frame", 
+                    "backgroundColor" : "red" , 
+                    "width" : "50%", 
+                    "height" : "100%" , 
+                    "paddingTop" : 200, 
+                    "item" : { 
+                        "type" : "Text" , 
+                        "color" : "black" , 
+                        "fontSize" : "@sharedFontSize", 
+                        "text" : "Center of Frame Grand Child (red background + padding Top)" , 
+                        "textAlign" : "center" , 
+                        "textAlignVertical" : "center" , 
+                        "width" : "100%", 
+                        "height": "100%" 
+                    }
+                } 
+            }
+        } 
+    },
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            { 
+                "type" : "Container" , 
+                "width" : "100vw" , 
+                "height" : "100vh" , 
+                "direction" : "row" , 
+                "items" : [ 
+                { 
+                  "type" : "Frame" , 
+                  "backgroundColor" : "yellow"  , 
+                  "width" : "100vw" , 
+                  "height" : "100vh" , 
+                  "position" : "absolute", 
+                  "top": 0 , 
+                  "item" : { 
+                    "type" : "Text" , 
+                    "color" : "black" , 
+                    "text" : "Center of yellow Frame" , 
+                    "textAlign" : "center" , 
+                    "textAlignVertical" : "center" , 
+                    "fontSize" : "@sharedFontSize", 
+                    "width" : "100%", 
+                    "height": "100%" 
+                  }
+                }, 
+                { 
+                    "type" : "FrameChild" , 
+                     "width" : "50vw" , 
+                    "height" : "80vh" , 
+                    "opacity" : 0.9 
+                },
+                { 
+                    "type" : "FrameGrandChild" , 
+                     "width" : "50vw" , 
+                    "height" : "100vh" , 
+                    "paddingLeft": "12.5vw",
+                    "opacity" : 0.9 
+                }
+                
+                ]    
+            }
+        ]
+    }
+}
