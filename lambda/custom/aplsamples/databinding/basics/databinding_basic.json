@@ -11,8 +11,7 @@
       {
         "type": "Frame",
         "width": "100vw",
-        "height": "100vh",
-        "backgroundColor": "red",
+        "height": "100vh",        
         "item": {
           "type": "Container",
           "width": "100vw",

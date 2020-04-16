@@ -208,7 +208,7 @@ const pagesMetadata = Object.freeze(
         nameResourceId: 'ANIMATION_PAGE.NAME',
         speechTextResourceId: 'ANIMATION_PAGE.TEXT',
         repromptResourceId: 'SHARED_PAGE.GOBACK',
-        document: '../aplsamples/animation/document.json',
+        document: '../aplsamples/animation/text/document.json',
         descriptionResourceId: 'ANIMATION_PAGE.DESCRIPTION',
         category: 'component',
 

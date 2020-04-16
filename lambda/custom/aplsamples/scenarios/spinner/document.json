@@ -84,7 +84,7 @@
                       { 
                          "when": "${@viewportShape != @viewportShapeRound}",
                         "type" : "Text" , 
-                        "text": "LEFT FEET" , 
+                        "text": "LEFT FOOT" , 
                         "position" : "absolute" , 
                         "left" : "5vw", 
                         "top": "10vw", 
@@ -93,7 +93,7 @@
                       { 
                         "when": "${@viewportShape != @viewportShapeRound}",
                         "type" : "Text" , 
-                        "text": "RIGHT FEET" , 
+                        "text": "RIGHT FOOT" , 
                         "position" : "absolute" , 
                         "right" : "5vw", 
                         "bottom": "10vw", 
