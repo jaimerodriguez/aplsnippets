@@ -1,22 +1,30 @@
 const Alexa = require('ask-sdk-core');
 const { AlexaUtils, Utils } = require('./utils/skillhelpers');
 const { localeInterceptor } = require('./utils/i18nhelper');
+const { IntentNames , RequestTypes, AmazonIntents } = require ('./constants'); 
+const Skill = require('./skill/skillHandlers');
+const { SpinnerScenarioIntentHandler } = require ('./skill/scenarioHandlers'); 
 
-const Skill = require('./skill/handlers');
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
+    return handlerInput.requestEnvelope.request.type === RequestTypes.Launch;
   },
   async handle(handlerInput) {
-    return Skill.renderMainMenu(handlerInput);
+
+    if (!AlexaUtils.supportsAPL(handlerInput)) 
+    { 
+      return Skill.createNoAPLResponse(handlerInput); 
+    }
+    else 
+      return Skill.renderMainMenu(handlerInput);
   },
 };
 
 const ShowFeatureRequestHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'ShowFeatureIntent';
+    return handlerInput.requestEnvelope.request.type === RequestTypes.Intent 
+      && handlerInput.requestEnvelope.request.intent.name === IntentNames.ShowFeature;
   },
   async handle(handlerInput) {
     return Skill.showFeature(handlerInput);
@@ -25,10 +33,10 @@ const ShowFeatureRequestHandler = {
 
 const NavigateHomeIntentHandler = {
   canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'IntentRequest'
-      && (request.intent.name === 'AMAZON.NavigateHomeIntent'
-        || request.intent.name === 'AMAZON.PreviousIntent');
+    const {request} = handlerInput.requestEnvelope;
+    return request.type === RequestTypes.Intent
+      && (request.intent.name === AmazonIntents.NavigateHome
+        || request.intent.name ===  AmazonIntents.Previous);
   },
   async handle(handlerInput) {
     return Skill.renderMainMenu(handlerInput);
@@ -37,14 +45,14 @@ const NavigateHomeIntentHandler = {
 
 const HelpIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
+    return handlerInput.requestEnvelope.request.type === RequestTypes.Intent
+      && handlerInput.requestEnvelope.request.intent.name === AmazonIntents.Help;
   },
   async  handle(handlerInput) {
-    const responseBuilder = handlerInput.responseBuilder;
+    const {responseBuilder} = handlerInput;
     const speechText = responseBuilder.i18n.s('HELP_INSTRUCTIONS');
     const reprompt = responseBuilder.i18n.s('MAINMENU_REPOMPT');
-    return handlerInput.responseBuilder
+    return responseBuilder
       .speak(speechText)
       .reprompt(reprompt)
       .getResponse();
@@ -54,14 +62,14 @@ const HelpIntentHandler = {
 
 const CancelAndStopIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
-        || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
+    return handlerInput.requestEnvelope.request.type === RequestTypes.Intent
+      && (handlerInput.requestEnvelope.request.intent.name === AmazonIntents.Cancel
+        || handlerInput.requestEnvelope.request.intent.name === AmazonIntents.Stop);
   },
   async handle(handlerInput) {
-    const responseBuilder = handlerInput.responseBuilder;
+    const {responseBuilder} = handlerInput;
     const speechText = responseBuilder.i18n.s('GOODBYE');
-    return handlerInput.responseBuilder
+    return responseBuilder
       .speak(speechText)
       .withShouldEndSession(true)
       .getResponse();
@@ -70,9 +78,9 @@ const CancelAndStopIntentHandler = {
 
 const SessionEndedRequestHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
+    return handlerInput.requestEnvelope.request.type === RequestTypes.SessionEnded;
   },
-  handle(handlerInput) {
+  handle(handlerInput) {    
     return handlerInput.responseBuilder.getResponse();
   },
 };
@@ -80,14 +88,14 @@ const SessionEndedRequestHandler = {
 
 const FallbackIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.FallbackIntent';
+    return handlerInput.requestEnvelope.request.type === RequestTypes.Intent
+      && handlerInput.requestEnvelope.request.intent.name === AmazonIntents.Fallback;
   },
   async handle(handlerInput) {
-    const responseBuilder = handlerInput.responseBuilder;
+    const {responseBuilder} = handlerInput;
     const msg = responseBuilder.i18n.s('FALLBACK_TRIGGERED');
     const reprompt = responseBuilder.i18n.s('FALLBACK_RETRY');
-    return handlerInput.responseBuilder
+    return responseBuilder
       .speak(msg)
       .reprompt(reprompt)
       .getResponse();
@@ -101,7 +109,7 @@ const ErrorHandler = {
   async handle(handlerInput, error) {
     const msg = AlexaUtils.getErrorDetails(handlerInput, error);
     console.log(`Error handled: ${msg}`);
-    const responseBuilder = handlerInput.responseBuilder;
+    const {responseBuilder} = handlerInput;
 
     const errorMessage = responseBuilder.i18n.s('ERROR');
     const reprompt = responseBuilder.i18n.s('ERROR_REPROMPT');
@@ -115,8 +123,8 @@ const ErrorHandler = {
 
 const SelectIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.SelectIntent';
+    return handlerInput.requestEnvelope.request.type === RequestTypes.Intent
+      && handlerInput.requestEnvelope.request.intent.name ===  AmazonIntents.Select;
   },
   async handle(handlerInput) {
     return Skill.handleSelection(handlerInput);
@@ -125,7 +133,7 @@ const SelectIntentHandler = {
 
 const UserEventHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'Alexa.Presentation.APL.UserEvent';
+    return handlerInput.requestEnvelope.request.type === RequestTypes.APLUserEvent;
   },
   async handle(handlerInput) {
     return Skill.handleUserEvent(handlerInput);
@@ -133,112 +141,27 @@ const UserEventHandler = {
 };
 
 
-const SpinnerScenarioIntentHandler = {
-  canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-    && handlerInput.requestEnvelope.request.intent.name === 'SpinnerScenarioIntent';
-  },
-  async handle(handlerInput) {
-    // TODO: Refactor this to a sample specific class
-    // TODO: localize
-    let nextAngle = Utils.getRandomIntInRange(0, 360);
-    //  const responseText = '<speak><audio src="soundbank://soundlibrary/toys_games/toys/toys_13"/><audio src="soundbank://soundlibrary/clocks/ticks/ticks_14"/> Spin again by saying spin, or <emphasis level="reduced">say</emphasis><emphasis level="reduced">not</emphasis><break strength="x-weak"/>ready for more time.</speak>';
-    const sessionState = handlerInput.attributesManager.getSessionAttributes();
-    let lastAngle = (sessionState.lastSpin) ? sessionState.lastSpin : 0;
-
-    if (lastAngle > 360) { lastAngle %= 360; }
-
-    if (nextAngle === lastAngle) {
-      if (nextAngle < 270) { nextAngle += 85; } else { nextAngle -= 85; }
-    }
-
-
-    const totalChildren = 16;
-    const childArc = 360 / totalChildren;
-
-    const speakItemCount = Math.floor(((nextAngle % 360) / childArc)) + 1;
-    nextAngle = (speakItemCount * childArc) - (childArc / 2);
-
-    if (nextAngle < lastAngle) { nextAngle += 360; }
-
-    const speakItemId = `speakItem${speakItemCount.toString().padStart(2, '0')}`;
-
-    console.log(`next angle: ${nextAngle}: ${speakItemId}`);
-    const response = handlerInput.responseBuilder
-      .speak(' ')
-      .reprompt('To spin again, say Spin.  Say go back to get to main menu')
-      .addDirective({
-        type: 'Alexa.Presentation.APL.ExecuteCommands',
-        token: 'spinnerToken',
-        commands: [
-          {
-            'type': 'Sequential',
-            'commands': [
-              {
-                'type': 'Parallel',
-                'repeatCount': 0,
-                'commands': [
-                  {
-                    'type': 'SpeakItem',
-                    'componentId': 'speakItemCrank',
-                  },
-                  {
-                    'type': 'AnimateItem',
-                    'easing': 'ease-in-out',
-                    'duration': 900,
-                    'delay': 1000,
-                    'componentId': 'dialComponentId',
-                    'value': [
-                      {
-                        'property': 'transform',
-                        'from': [
-                          { 'rotate': lastAngle },
-                        ],
-                        'to': [
-                          { 'rotate': nextAngle },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                'type': 'SpeakItem',
-                'componentId': speakItemId,
-              },
-              {
-                'type': 'SpeakItem',
-                'componentId': 'speakItemSharedTicks',
-              },
-            ],
-          },
-        ],
-      })
-      .getResponse();
-    sessionState.lastSpin = nextAngle;
-    handlerInput.attributesManager.getSessionAttributes(sessionState);
-    return response;
-  },
-};
-
 const MoreTimeIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'MoreTimeIntent';
+    return handlerInput.requestEnvelope.request.type === RequestTypes.Intent
+      && handlerInput.requestEnvelope.request.intent.name === IntentNames.MoreTime;
   },
   async handle(handlerInput) {
-    // TODO: localize
-    const responseText = '<speak>Ok, here is thirty more seconds <break time="10s"/>.<amazon:effect name="whispered">ten</amazon:effect><break time="10s"/>.<amazon:effect name="whispered">twenty</amazon:effect><break time="10s"/>.<amazon:effect name="whispered">thirty</amazon:effect></speak>';
-    const response = handlerInput.responseBuilder
+    const {responseBuilder} = handlerInput;
+    const responseText = responseBuilder.i18n.s('MORE_TIME');
+    const reprompt = responseBuilder.i18n.s('MORE_TIME_REPROMPT');
+
+   
+    const response = responseBuilder
       .speak(responseText)
-      .reprompt('say more time again to extend again')
+      .reprompt(reprompt )
       .getResponse();
 
     return response;
   },
 };
 
-/* INTERCEPTORS */
+//#region DEBUG_INTERCEPTORS 
 const LogRequestInterceptor = {
   process(handlerInput) {
     console.log(`REQUEST ENVELOPE = ${JSON.stringify(handlerInput.requestEnvelope)}`);
@@ -250,6 +173,8 @@ const LogResponseInterceptor = {
     console.log(`RESPONSE = ${JSON.stringify(handlerInput.responseBuilder.getResponse())}`);
   },
 };
+
+//#endregion DEBUG_INTERCEPTORS 
 
 const skillBuilder = Alexa.SkillBuilders.custom();
 
@@ -266,8 +191,8 @@ skillBuilder.addRequestHandlers(
   SpinnerScenarioIntentHandler,
   FallbackIntentHandler,
 )
-  .addErrorHandlers(ErrorHandler)
-  .addRequestInterceptors(localeInterceptor);
+.addErrorHandlers(ErrorHandler)
+.addRequestInterceptors(localeInterceptor);
 
 if (process.env.DEBUGLOG && process.env.DEBUGLOG === 'verbose') {
   skillBuilder.addRequestInterceptors(LogRequestInterceptor);

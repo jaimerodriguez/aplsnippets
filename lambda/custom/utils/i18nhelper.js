@@ -49,8 +49,23 @@ class I18nHelper {
     return this.locale;
   }
 
+  sformatByName (name , ...values ) { 
+    let placeholder = this.s(name); 
+    if (values.length) {
+      const t = typeof values[0];
+      const args = (t === 'string' || t === 'number')
+        ? Array.prototype.slice.call(values) : values[0];
+      // eslint-disable-next-line guard-for-in
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key in args) {
+        // eslint-disable-next-line guard-for-in
+        placeholder = placeholder.replace(new RegExp(`\\{${key}\\}`, 'gi'), args[key]);
+      }
+    }
+    return placeholder;
+  }     
 
-  sformat(name, ...args) {
+  sformatByPosition(name, ...args) {
     let placeholder = this.s(name);
     for (let x = 0; x < args.length; x += 1) {
       const item = `{${x}}`;

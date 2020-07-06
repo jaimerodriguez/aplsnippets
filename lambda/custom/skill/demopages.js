@@ -1,3 +1,6 @@
+
+/// 
+/// 
 class APLSamplePage {
   constructor(obj) {
     this.name = obj.name || '';
@@ -309,6 +312,18 @@ const pagesMetadata = Object.freeze(
         datasource: '../aplsamples/datasources/animals_no_transformers.json',
       }),
     ],
+    [ 
+    'vector',
+    new APLSamplePage({
+      nameResourceId: 'VECTOR_GRAPHIC_PAGE.NAME',
+      speechTextResourceId: 'VECTOR_GRAPHIC_PAGE.TEXT',
+      repromptResourceId: 'SHARED_PAGE.GOBACK',
+      document: '../aplsamples/components/vectorgraphic/document.json',
+      descriptionResourceId: 'VECTOR_GRAPHIC_PAGE.DESCRIPTION',
+      category: 'component',
+      token: 'vectorGraphicToken',       
+    }),  
+    ]   
   ])
 );
 

@@ -1,14 +1,14 @@
 {
   "strings": {
-    "HELP_INSTRUCTIONS": "This is a small collection of APL feature demos. To see a demo just call select it by ordinal or by name",
+    "HELP_INSTRUCTIONS": "This is a small collection of <say-as interpret-as=\"characters\">apl</say-as> feature demos. To see a demo just say the ordinal or the name of the demo",
 
     "PAGE_NOT_FOUND": "I did not understand. Say show followed by demo name, for example: show profile or show video to see a feature in action",
     "PAGE_NOT_FOUND_REPROMPT": "<speak>Say <emphasis level=\"moderate\">Show,</emphasis><emphasis level=\"reduced\"> folllowed by what ever demo you want to see </emphasis>.</speak>",
 
-    "GOODBYE": "Good bye",
+    "GOODBYE": "<speak>Good bye. To invoke this skill again, say open <say-as interpret-as=\"characters\">apl</say-as> snippets ",
     "ERROR": [ "There was an error. Please try again" ],
 
-    "ERROR_REPROMPT": "<speak>Say <emphasis level=\"moderate\">Show,</emphasis><emphasis level=\"reduced\"> folllowed by what ever demo you want to see </emphasis>.</speak>",
+    "ERROR_REPROMPT": "<speak>Say <emphasis level=\"moderate\">Show,</emphasis><emphasis level=\"reduced\"> folllowed by what ever demo you want to see </emphasis></speak>",
 
     "MAINMENU_REPROMPT": [
       "<speak>To see a demo, say <emphasis level=\"moderate\">Show, </emphasis><emphasis level=\"reduced\"> folllowed by the feature name.</emphasis>. For example, say <break strength=\"strong\"/>Show profile </speak>",
@@ -17,6 +17,13 @@
 
     "FALLBACK_TRIGGERED": "I did not understand. Please try again",
     "FALLBACK_RETRY": "<speak>Say <emphasis level=\"moderate\">Show, </emphasis><emphasis level=\"reduced\"> folllowed by the feature name.</emphasis>. For example, say <break strength=\"strong\"/>Show text, to see the text demo</speak>",
+
+    "MORE_TIME": "<speak>Ok, here is thirty more seconds <break time=\"10s\"/><amazon:effect name=\"whispered\">ten</amazon:effect><break time=\"10s\"/>.<amazon:effect name=\"whispered\">twenty</amazon:effect><break time=\"10s\"/>.<amazon:effect name=\"whispered\">thirty</amazon:effect></speak>", 
+    "MORE_TIME_REPROMPT" : "<speak>Say more time again to extend again<break strength=\"strong\"/>Say <emphasis level=\"moderate\">Show,</emphasis><emphasis level=\"reduced\"> folllowed by what ever demo you want to see</speak>" , 
+
+    "APL_REQUIRED" : "<speak>this developer demo can only run on an Alexa device that supports Alexa Presentation Language. Try invoking this demo in a multi-modal device or the skill development simulator </speak>", 
+
+    "USER_EVENT_WITHARGS_FORMAT" : "User event handled for {source}'s {handler} with arguments {userArgs}" , 
 
     "SHARED_PAGE": {
       "GOBACK": "Say 'go back' to get back to main menu",
@@ -50,7 +57,7 @@
     },
     "TOUCHWRAPPER_PAGE": {
       "NAME": "touchwrapper",
-      "TEXT": "click on the buttons and image to send events",
+      "TEXT": "<speak>Click on the buttons and image to send events <break strength=\"strong\" /> The buttons send two events <break strength=\"medium\" />the image sends only one</speak>",
       "DESCRIPTION": "Shows TouchWrapper and sendEvent commands"
     },
     "SPEAKITEM_TRANSFORMER_PAGE": {
@@ -61,7 +68,7 @@
     "SPEAKITEM_SPEECH_PAGE": {
       "NAME": "speakitem",
       "TEXT": "Speak item using speech ",
-      "DESCRIPTION": "SpeakItem using speech "
+      "DESCRIPTION": "SpeakItem using speech"
     },
     "PAGER_PAGE": {
       "NAME": "pager",
@@ -122,6 +129,11 @@
       "NAME": "databinding sequence",
       "TEXT": "databinding for sequence",
       "DESCRIPTION": "Bind data source to a Sequence with a set of items in the items property."
+    },
+    "VECTOR_GRAPHIC_PAGE": {
+      "NAME": "vector graphic",
+      "TEXT": "<speak>Two Vector Graphics<break strength=\"strong\"/> The main land map is a remote <say-as interpret-as=\"characters\">avg</say-as> object <break strength=\"strong\"/> Hawaii and Alaska are an inlined an <say-as interpret-as=\"characters\">avg</say-as>  object</speak>",
+      "DESCRIPTION": "Alexa Vector Graphics objects and Vector Graphic component."
     },
 
     "ANAPHORICSELECTION": "Anaphorically, you requested {0}, which maps to {1}",

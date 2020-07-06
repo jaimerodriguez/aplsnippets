@@ -137,7 +137,11 @@
                             "width" : "100%" , 
                             "height" : "20vh", 
                             "spacing" : "10vh", 
-                            "action" : "decrease" 
+                            "action" : "decrease" ,
+                            "eventArgs" : [ 
+                                "source:button02" ,  
+                                "operation:decrease"
+                            ]
                         } 
                     ] 
                     }, 
@@ -165,8 +169,7 @@
                                 {
                                     "type": "SendEvent" ,
                                     "arguments" :  [ 
-                                         "argument one" , 
-                                         "argument two"  
+                                         "cat image was pressed"                                           
                                     ]
                                 }, 
                                 {

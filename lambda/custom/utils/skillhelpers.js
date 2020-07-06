@@ -1,18 +1,18 @@
 
 function supportsDisplay(handlerInput) {
-  return handlerInput.requestEnvelope.context
-      && handlerInput.requestEnvelope.context.System
-      && handlerInput.requestEnvelope.context.System.device
-      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces
-      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces.Display;
+  return handlerInput.requestEnvelope.context !== undefined 
+      && handlerInput.requestEnvelope.context.System !== undefined 
+      && handlerInput.requestEnvelope.context.System.device !== undefined 
+      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces  !== undefined 
+      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces.Display !== undefined ;
 }
 
 
 function supportsAPL(handlerInput) {
-  return handlerInput.requestEnvelope.context
-      && handlerInput.requestEnvelope.context.System
-      && handlerInput.requestEnvelope.context.System.device
-      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces
+  return handlerInput.requestEnvelope.context !== undefined 
+      && handlerInput.requestEnvelope.context.System !== undefined 
+      && handlerInput.requestEnvelope.context.System.device !== undefined
+      && handlerInput.requestEnvelope.context.System.device.supportedInterfaces !== undefined
       && handlerInput.requestEnvelope.context.System.device.supportedInterfaces['Alexa.Presentation.APL'];
 }
 
@@ -56,6 +56,9 @@ function getActionName(handlerInput) {
 
   return handlerInput.requestEnvelope.request.type;
 }
+
+
+
 function getErrorDetails(handlerInput, error) {
   if (process.env.DEBUGLOG && (process.env.DEBUGLOG === 'error' || process.env.DEBUGLOG === 'verbose')) {
     console.log(`Start: Error details for ${error.message}`);
@@ -74,11 +77,11 @@ function getErrorDetails(handlerInput, error) {
  * @param {Object} handlerInput the Alexa request
  */
 function getSupportedInterfaces(handlerInput) {
-  if (handlerInput.requestEnvelope.context
-    && handlerInput.requestEnvelope.context.System
-    && handlerInput.requestEnvelope.context.System.device
-    && handlerInput.requestEnvelope.context.System.device.supportedInterfaces) {
-    const device = handlerInput.requestEnvelope.context.System.device;
+  if (handlerInput.requestEnvelope.context !== undefined
+    && handlerInput.requestEnvelope.context.System !== undefined
+    && handlerInput.requestEnvelope.context.System.device !== undefined
+    && handlerInput.requestEnvelope.context.System.device.supportedInterfaces !== undefined) {
+    const {device} = handlerInput.requestEnvelope.context.System;
     return Object.getOwnPropertyNames(device.supportedInterfaces);
   }
   return [];
@@ -91,7 +94,7 @@ function getSupportedInterfaces(handlerInput) {
  */
 function supportsInterface(handlerInput, interfaceName) {
   const envelope = handlerInput.requestEnvelope;
-  if (envelope.context
+  if (envelope.context 
       && envelope.context.System
       && envelope.context.System.device
       && envelope.context.System.device.supportedInterfaces) {

@@ -185,46 +185,60 @@
             ],
             "item": [
                 {
-                    "type": "Container",
-                    "direction": "row",
-                    "height": 125,
-                    "width": "100%",
-                    "alignItems": "center",
-                    "id" : "${itemId}" ,
-                    "items": [
+                    "type": "TouchWrapper" , 
+                    "onPress":  
+                    [  
                         {
-                            "type": "Text",
-                            "text": "${ordinal}",
-                            "paddingBottom": "20dp",
-                            "color": "white",
-                            "spacing": "5dp"
-                        },
-                        {
-                            "type": "Container",
-                            "spacing": 30,
-                            "direction": "column",
-                            "items": [
-                                {
-                                    "type": "Text",
-                                    "text": "${primaryText}",
-                                    "style": "textStyleBody",
-                                    "fontWeight": "300",
-                                    "grow": 1,
-                                    "shrink" : 1,
-                                    "maxLines" : 1
-                                },
-                                {
-                                    "type": "Text",
-                                    "text": "${secondaryText}",
-                                    "style": "textStyleDetails",
-                                    "fontWeight": "300",
-                                    "grow": 1,
-                                    "shrink": 1,
-                                    "maxLines": 1
-                                }
+                            "type": "SendEvent" ,
+                            "arguments" :  [                                     
+                                    "mainMenuSelection"  , 
+                                    "${itemId}" 
                             ]
-                        }
-                    ]
+                        }                             
+                    ],
+                    "item" : 
+                        {                      
+                        "type": "Container",
+                        "direction": "row",
+                        "height": 125,
+                        "width": "100%",
+                        "alignItems": "center",
+                        "id" : "${itemId}" ,
+                        "items": [
+                            {
+                                "type": "Text",
+                                "text": "${ordinal}",
+                                "paddingBottom": "20dp",
+                                "color": "white",
+                                "spacing": "5dp"
+                            },
+                            {
+                                "type": "Container",
+                                "spacing": 30,
+                                "direction": "column",
+                                "items": [
+                                    {
+                                        "type": "Text",
+                                        "text": "${primaryText}",
+                                        "style": "textStyleBody",
+                                        "fontWeight": "300",
+                                        "grow": 1,
+                                        "shrink" : 1,
+                                        "maxLines" : 1
+                                    },
+                                    {
+                                        "type": "Text",
+                                        "text": "${secondaryText}",
+                                        "style": "textStyleDetails",
+                                        "fontWeight": "300",
+                                        "grow": 1,
+                                        "shrink": 1,
+                                        "maxLines": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    }                 
                 }
             ]
         }

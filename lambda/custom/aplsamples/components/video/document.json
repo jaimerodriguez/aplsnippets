@@ -54,10 +54,12 @@
                 {
                     "type" : "Text" ,
                     "id" : "videoStatusId" ,
-                    "text" : "unknown" ,
+                    "text" : "" ,
                     "position" : "absolute",
                     "top" : 10 ,
-                    "height" : "50"
+                    "height" : "50", 
+                    "color": "#81eb14"
+
                 },
                 {
                     "type": "TouchWrapper",
@@ -71,7 +73,7 @@
                     "item" :
                     {
 						"type": "Image",
-						"source": "https://s3.amazonaws.com/syfyapl/playback/pause.png",
+						"source": "https://aplsnippets.s3.amazonaws.com/assets/images/pause_green.png",
 						"height": "10vh",
 						"width": "10vw",
 						"paddingLeft": "1vw",
@@ -116,7 +118,7 @@
                     "item" :
                     {
 						"type": "Image",
-						"source": "https://s3.amazonaws.com/syfyapl/playback/play.png",
+						"source": "https://aplsnippets.s3.amazonaws.com/assets/images/play_green.png",
 						"height": "10vh",
 						"width": "10vw",
 						"paddingLeft": "1vw",

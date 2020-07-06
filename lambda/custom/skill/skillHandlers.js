@@ -1,39 +1,39 @@
 const Alexa = require('ask-sdk-core');
 const { AlexaUtils, Utils } = require('../utils/skillhelpers.js');
 const { pages, menuPage } = require('./demopages');
-const { SLOTNAMES } = require('./constants');
+const { SlotNames , UserEventArgs } = require('../constants');
+const { CachedPagerUserEventHandler } = require ( './scenarioHandlers');  
 
 async function renderPage(handlerInput, pageElement, pageOverrides) {
-  const responseBuilder = handlerInput.responseBuilder;
-  const speechText = pageElement.speechText;
-  const reprompt = pageElement.reprompt;
-
-
+  const {responseBuilder} = handlerInput;
+  const { speechText, reprompt} = pageElement ;
   responseBuilder.speak(speechText);
 
   if (reprompt && reprompt !== '') {
     responseBuilder.reprompt(reprompt);
   }
+
   /* eslint-disable import/no-dynamic-require */
   /* eslint-disable global-require */
   const renderDocument = require(pageElement.document);
-  let renderDatasource = null;
 
+  let renderDatasource = null;
 
   if (pageOverrides && pageOverrides.datasource) {
     renderDatasource = pageOverrides.datasource;
   } else if (pageElement.datasource) {
+    // passing a path to a file to load 
     if (typeof (pageElement.datasource) === 'string') {
       // eslint-disable-next-line import/no-dynamic-require
       renderDatasource = require(pageElement.datasource);
-    } else {
+    }  
+    else { // passing an object 
       renderDatasource = pageElement.datasource;
     }
   }
 
   const renderToken = pageElement.token || 'default';
-  const renderVersion = pageElement.version || '1.1';
-
+  const renderVersion = pageElement.version || '1.3';
   responseBuilder.addDirective({
     type: 'Alexa.Presentation.APL.RenderDocument',
     token: renderToken,
@@ -43,21 +43,18 @@ async function renderPage(handlerInput, pageElement, pageOverrides) {
   });
   if (pageElement.commands) {
     console.assert(renderToken === pageElement.token);
-    const dir = AlexaUtils.createAPLCommandDirective(renderToken, pageElement.commands);
-    responseBuilder.addDirective(dir);
+    const directive = AlexaUtils.createAPLCommandDirective(renderToken, pageElement.commands);
+    responseBuilder.addDirective(directive);
   }
   return responseBuilder.getResponse();
 }
 
 function pageNotFound(handlerInput) {
-  const responseBuilder = handlerInput.responseBuilder;
-
+  const {responseBuilder} = handlerInput;  
   const errorMessage = responseBuilder.i18n.s('PAGE_NOT_FOUND');
   const reprompt = responseBuilder.i18n.s('PAGE_NOT_FOUND_REPROMPT');
-
   responseBuilder.speak(errorMessage);
   responseBuilder.reprompt(reprompt);
-
   return responseBuilder.getResponse();
 }
 
@@ -87,16 +84,17 @@ async function renderMainMenu(handlerInput) {
       'pages': localizedPages,
     },
   };
-
-  console.log(JSON.stringify(pagesDataSource));
+   
   const response = await renderPage(handlerInput, page, { datasource: pagesDataSource });
   return response;
 }
+
 
 async function handleUserEvent(handlerInput) {
   const userEvent = handlerInput.requestEnvelope.request;
   const source = userEvent.source.type;
   const handler = userEvent.source.handler;
+  const resourceManager = handlerInput.responseBuilder.i18n;
   let userArgs = '';
 
   if (userEvent.arguments && userEvent.arguments.length > 0) {
@@ -104,40 +102,33 @@ async function handleUserEvent(handlerInput) {
       return renderMainMenu();
     }
 
-    if (userEvent.arguments[0] === 'Cached_Pager_Next' || userEvent.arguments[0] === 'Cached_Pager_Previous') {
-      const direction = (userEvent.arguments[0] === 'Cached_Pager_Previous') ? -1 : 1;
-      // TODO :make resources
-      const responseText = `user event handled for ${source}'s ${handler} with arguments ${userArgs}`;
-      const response = handlerInput.responseBuilder
-        .speak(responseText)
-        .addDirective({
-          type: 'Alexa.Presentation.APL.ExecuteCommands',
-          token: 'cachedPagerToken',
-          commands: [
-            {
-              'type': 'SetPage',
-              'componentId': 'pagerId',
-              'position': 'relative',
-              'value': direction,
-            },
-          ],
-        })
-        .getResponse();
-      return response;
-    }
+    if ( userEvent.arguments[0] === UserEventArgs.CachedPager_Next 
+      || userEvent.arguments[0] === UserEventArgs.CachedPager_Previous) {
+        return CachedPagerUserEventHandler.handle(handlerInput); 
+    } 
 
-    console.log(`processing ${userEvent.arguments.join(',')}`);
+    if ( userEvent.arguments[0] === UserEventArgs.MainMenuSelection 
+      && userEvent.arguments.length > 1 ) { 
+      const pageName = userEvent.arguments[1]; 
+      const locale = Alexa.getLocale(handlerInput.requestEnvelope);
+      const page = await pages.get(pageName).resolveToLocale(resourceManager, locale);
+      const response = await renderPage(handlerInput, page);
+      return response; 
+    }
+    //Generic handler ...  
     userEvent.arguments.forEach((arg) => {
-      // eslint-disable-next-line template-curly-spacing
-      console.log(`userEvent: ${arg}`);
+      // eslint-disable-next-line template-curly-spacing     
       const kvp = arg.split(':');
       if (kvp.length > 1) {
-        userArgs += `name: ${kvp[0]}, value: ${kvp[1]}  , `;
+        userArgs += `${kvp[0]}: ${kvp[1]}  , `;
       } else { userArgs += `${arg},`; }
     });
   }
-  // TODO: localize
-  const responseText = `user event handled for ${source}'s ${handler} with arguments ${userArgs}`;
+   
+  const responseText = resourceManager.sformatByName ( 
+    'USER_EVENT_WITHARGS_FORMAT' ,  
+    {source: source, handler: handler , userArgs: userArgs});
+
   const response = handlerInput.responseBuilder
     .speak(responseText)
     .getResponse();
@@ -145,18 +136,19 @@ async function handleUserEvent(handlerInput) {
   return response;
 }
 
-async function showFeature(handlerInput) {
-  let pageName = Alexa.getSlotValue(handlerInput.requestEnvelope, SLOTNAMES.PAGENAME);
-  let response = null;
+async function showFeature(handlerInput  ) {
+  
   const locale = Alexa.getLocale(handlerInput.requestEnvelope);
   const resourceManager = handlerInput.responseBuilder.i18n;
-
+  let response = null;
+  let pageName =  Alexa.getSlotValue(handlerInput.requestEnvelope, SlotNames.PageName);
+  
+  
   if (!pages.has(pageName)) {
-    // Find the match based on other criteria ..
-    // TODO: extract into utils. it is here for now to find niche cases..
-    const slot = Alexa.getSlot(handlerInput.requestEnvelope, SLOTNAMES.PAGENAME);
-    if (slot && slot.resolutions
-          && slot.resolutions.resolutionsPerAuthority
+    // Find the match based on other criteria ..     
+    const slot = Alexa.getSlot(handlerInput.requestEnvelope, SlotNames.PageName);
+    if (slot && slot.resolutions !== undefined
+          && slot.resolutions.resolutionsPerAuthority !== undefined
           && slot.resolutions.resolutionsPerAuthority.length > 0) {
       const values = slot.resolutions.resolutionsPerAuthority[0].values;
       if (values && values.length > 0) {
@@ -166,9 +158,7 @@ async function showFeature(handlerInput) {
           if (pages.has(value.id)) {
             pageName = value.id;
             break;
-          } else {
-            console.log(`no match for slot {value.name} with id: ${value.id}`);
-          }
+          }  
         }
       }
     }
@@ -176,7 +166,7 @@ async function showFeature(handlerInput) {
 
   if (!pages.has(pageName)) {
     // There is no page name, try an index ...
-    const demoIndex = Alexa.getSlotValue(handlerInput.requestEnvelope, SLOTNAMES.PAGEINDEX);
+    const demoIndex = Alexa.getSlotValue(handlerInput.requestEnvelope, SlotNames.PAGEINDEX);
     if (demoIndex) {
       try {
         const numericIndex = parseInt(demoIndex, 10);
@@ -212,7 +202,7 @@ async function handleSelection(handlerInput) {
   if (anaphorValue != null) {
     const anaphorIdentifier = AlexaUtils.getVisualContextAuthorityResolvedIdentifier(anaphorSlot);
     if (anaphorIdentifier != null) {
-      speechText = responseBuilder.i18n.sformat('ANAPHORICSELECTION', anaphorValue, anaphorIdentifier);
+      speechText = responseBuilder.i18n.sformatByPosition('ANAPHORICSELECTION', anaphorValue, anaphorIdentifier);
     } else {
       speechText = responseBuilder.i18n.s('INVALIDANAPHORICREQUEST');
     }
@@ -234,10 +224,22 @@ async function handleSelection(handlerInput) {
   return response;
 }
 
+
+function createNoAPLResponse ( handlerInput ) { 
+  const {responseBuilder} = handlerInput;
+  const speechText = responseBuilder.i18n.s('APL_REQUIRED');   
+
+  return responseBuilder 
+    .speak(speechText)
+    .withShouldEndSession(true)
+    .getResponse();   
+}
+
 module.exports = {
-  renderMainMenu: renderMainMenu,
-  renderPage: renderPage,
-  handleUserEvent: handleUserEvent,
-  showFeature: showFeature,
-  handleSelection: handleSelection,
+  renderMainMenu ,
+  renderPage ,
+  handleUserEvent ,
+  showFeature ,
+  handleSelection ,
+  createNoAPLResponse
 };

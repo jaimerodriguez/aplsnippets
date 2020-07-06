@@ -10,8 +10,8 @@
         {
             "type": "AutoPage",
             "componentId": "pagerId",
-            "delay": 500,
-            "duration": 1000 
+            "delay": 2500,
+            "duration": 4000 
         }          
     ], 
     "mainTemplate": {
@@ -50,11 +50,13 @@
                         { 
                             "type": "Text" , 
                             "width" : "100%" , 
-                            "height" : "100%" , 
+                            "height" : "15%" , 
                             "text": "page #2"   , 
                             "textAlignVertical" : "center" , 
                             "textAlign" : "center" , 
-                            "color" : "red" 
+                            "color" : "red" , 
+                            "position" : "absolute" ,  
+                            "top" : "10%" 
                         } 
                        ]
                     }, 

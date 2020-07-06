@@ -20,7 +20,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Proxy",
-            "program": "${workspaceRoot}/node_modules/bespoken-tools/bin/bst-proxy.js",
+            "program": "/users/jaimerz/.npm-global/lib/node_modules/bespoken-tools/bin/bst-proxy.js",
             "args": ["lambda", "index.js"],
             "cwd": "${workspaceRoot}", 
             "runtimeExecutable": "/usr/local/bin/node" , 
