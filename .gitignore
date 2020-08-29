@@ -339,3 +339,6 @@ ASALocalRun/
 
 lambda/custom/package-lock.json
 lambda/custom/.DS_Store
+
+#ask-cli-v2 folders 
+.ask
