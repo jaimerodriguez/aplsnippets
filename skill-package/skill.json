@@ -48,10 +48,7 @@
               }
             ]
           }
-        ],
-        "endpoint": {
-          "uri": "arn:aws:lambda:us-east-1:790487726150:function:ask-aplsnippets-default-default-1598740330319"
-        }
+        ]
       }
     },
     "manifestVersion": "1.0",
